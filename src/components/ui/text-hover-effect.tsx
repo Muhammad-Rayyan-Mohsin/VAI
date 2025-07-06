@@ -30,9 +30,9 @@ export const TextHoverEffect = ({
   const textStyle = {
     fontFamily: 'Inter, helvetica, sans-serif',
     fontSize: '48px',
-    fontWeight: 'bold',
+    fontWeight: '900',
     fill: 'transparent',
-    strokeWidth: '0.5',
+    strokeWidth: '1.2',
   };
 
   return (
@@ -96,8 +96,8 @@ export const TextHoverEffect = ({
         dominantBaseline="middle"
         style={{
           ...textStyle,
-          stroke: '#e5e7eb',
-          opacity: hovered ? 0.7 : 0,
+          stroke: '#d1d5db',
+          opacity: hovered ? 0.7 : 1,
         }}
       >
         {text}
@@ -111,9 +111,10 @@ export const TextHoverEffect = ({
         dominantBaseline="middle"
         style={{
           ...textStyle,
-          stroke: '#e5e7eb',
+          stroke: '#d1d5db',
+          opacity: 0.3,
         }}
-        initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
+        initial={{ strokeDashoffset: 0, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
           strokeDasharray: 1000,
@@ -135,6 +136,7 @@ export const TextHoverEffect = ({
         style={{
           ...textStyle,
           stroke: 'url(#textGradient)',
+          opacity: hovered ? 1 : 0,
         }}
         mask="url(#textMask)"
       >

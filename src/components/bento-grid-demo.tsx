@@ -7,14 +7,13 @@ import {
   IconBrain,
   IconDatabase,
   IconCode,
-  IconCpu,
   IconBolt,
   IconTrendingUp,
 } from "@tabler/icons-react";
 
 export default function BentoGridDemo() {
   return (
-    <BentoGrid className="max-w-6xl mx-auto">
+    <BentoGrid className="max-w-6xl mx-auto md:grid-cols-6">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -22,7 +21,11 @@ export default function BentoGridDemo() {
           description={item.description}
           header={item.header}
           icon={item.icon}
-          className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+          className={
+            i < 3 ? "md:col-span-2" : 
+            i === 3 ? "md:col-span-3" : 
+            "md:col-span-3"
+          }
         />
       ))}
     </BentoGrid>
@@ -66,17 +69,7 @@ const CodeSkeleton = () => (
   </div>
 );
 
-const NeuralNetworkSkeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-orange-200 to-red-200 dark:from-orange-900 dark:to-red-900 relative overflow-hidden">
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="grid grid-cols-4 gap-3">
-        {[...Array(12)].map((_, i) => (
-          <div key={i} className="w-3 h-3 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.1}s` }} />
-        ))}
-      </div>
-    </div>
-  </div>
-);
+
 
 const AutomationSkeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-yellow-200 to-amber-200 dark:from-yellow-900 dark:to-amber-900 relative overflow-hidden">
@@ -120,12 +113,6 @@ const items = [
     description: "Modern, scalable web applications and platforms built with cutting-edge technologies and best practices.",
     header: <CodeSkeleton />,
     icon: <IconCode className="h-4 w-4 text-slate-500" />,
-  },
-  {
-    title: "Deep Learning & Neural Networks",
-    description: "Advanced neural networks for computer vision, natural language processing, and complex pattern recognition systems.",
-    header: <NeuralNetworkSkeleton />,
-    icon: <IconCpu className="h-4 w-4 text-orange-500" />,
   },
   {
     title: "Process Automation",

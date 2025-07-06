@@ -38,58 +38,56 @@ export const Cover = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       ref={ref}
-      className="relative hover:bg-neutral-900  group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2  transition duration-200 rounded-sm"
+      className="relative hover:bg-neutral-900  group/cover inline-block dark:bg-neutral-900 bg-neutral-800 px-2 py-2  transition duration-200 rounded-xl"
     >
       <AnimatePresence>
-        {hovered && (
+        <motion.div
+          initial={{ opacity: 0.8 }}
+          animate={{ opacity: hovered ? 1 : 0.8 }}
+          exit={{ opacity: 0.8 }}
+          transition={{
+            opacity: {
+              duration: 0.2,
+            },
+          }}
+          className="h-full w-full overflow-hidden absolute inset-0"
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            animate={{
+              translateX: ["-50%", "0%"],
+            }}
             transition={{
-              opacity: {
-                duration: 0.2,
+              translateX: {
+                duration: 10,
+                ease: "linear",
+                repeat: Infinity,
               },
             }}
-            className="h-full w-full overflow-hidden absolute inset-0"
+            className="w-[200%] h-full flex"
           >
-            <motion.div
-              animate={{
-                translateX: ["-50%", "0%"],
-              }}
-              transition={{
-                translateX: {
-                  duration: 10,
-                  ease: "linear",
-                  repeat: Infinity,
-                },
-              }}
-              className="w-[200%] h-full flex"
-            >
-              <SparklesCore
-                background="transparent"
-                minSize={0.4}
-                maxSize={1}
-                particleDensity={500}
-                className="w-full h-full"
-                particleColor="#FFFFFF"
-              />
-              <SparklesCore
-                background="transparent"
-                minSize={0.4}
-                maxSize={1}
-                particleDensity={500}
-                className="w-full h-full"
-                particleColor="#FFFFFF"
-              />
-            </motion.div>
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={hovered ? 500 : 300}
+              className="w-full h-full"
+              particleColor="#FFFFFF"
+            />
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={hovered ? 500 : 300}
+              className="w-full h-full"
+              particleColor="#FFFFFF"
+            />
           </motion.div>
-        )}
+        </motion.div>
       </AnimatePresence>
       {beamPositions.map((position, index) => (
         <Beam
           key={index}
-          hovered={hovered}
+          hovered={true}
           duration={Math.random() * 2 + 1}
           delay={Math.random() * 2 + 1}
           width={containerWidth}
@@ -102,8 +100,8 @@ export const Cover = ({
         key={String(hovered)}
         animate={{
           scale: hovered ? 0.8 : 1,
-          x: hovered ? [0, -30, 30, -30, 30, 0] : 0,
-          y: hovered ? [0, 30, -30, 30, -30, 0] : 0,
+          x: hovered ? [0, -30, 30, -30, 30, 0] : [0, -0.5, 0.5, -0.5, 0.5, 0],
+          y: hovered ? [0, 30, -30, 30, -30, 0] : [0, 0.5, -0.5, 0.5, -0.5, 0],
         }}
         exit={{
           filter: "none",
@@ -114,14 +112,18 @@ export const Cover = ({
         transition={{
           duration: 0.2,
           x: {
-            duration: 0.2,
+            duration: hovered ? 0.2 : 12,
             repeat: Infinity,
             repeatType: "loop",
+            ease: "easeInOut",
+            repeatDelay: hovered ? 0 : 3,
           },
           y: {
-            duration: 0.2,
+            duration: hovered ? 0.2 : 12,
             repeat: Infinity,
             repeatType: "loop",
+            ease: "easeInOut",
+            repeatDelay: hovered ? 0 : 3,
           },
           scale: {
             duration: 0.2,
@@ -131,16 +133,13 @@ export const Cover = ({
           },
         }}
         className={cn(
-          "dark:text-white inline-block text-neutral-900 relative z-20 group-hover/cover:text-white transition duration-200",
+          "dark:text-white inline-block text-white relative z-20 group-hover/cover:text-white transition duration-200",
           className
         )}
       >
         {children}
       </motion.span>
-      <CircleIcon className="absolute -right-[2px] -top-[2px]" />
-      <CircleIcon className="absolute -bottom-[2px] -right-[2px]" delay={0.4} />
-      <CircleIcon className="absolute -left-[2px] -top-[2px]" delay={0.8} />
-      <CircleIcon className="absolute -bottom-[2px] -left-[2px]" delay={1.6} />
+
     </div>
   );
 };
