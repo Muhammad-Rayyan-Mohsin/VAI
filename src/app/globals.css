@@ -1,0 +1,448 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* VAIBRANT Brand Colors - shadcn Color System */
+    /* Primary: Dark Slate #334155 (215.3 25% 26.7%) */
+    /* Secondary: Darker Slate #1e293b (217.2 32.6% 17.5%) */
+    /* Accent: Pure White #fafafa (0 0% 98%) */
+    
+    --background: 0 0% 98%;
+    --foreground: 217.2 32.6% 17.5%;
+    --card: 0 0% 98%;
+    --card-foreground: 217.2 32.6% 17.5%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 217.2 32.6% 17.5%;
+    --primary: 217.2 32.6% 17.5%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 215.3 25% 26.7%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 215.3 25% 26.7%;
+    --accent: 215.3 25% 26.7%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 215.3 25% 26.7%;
+    --radius: 0.5rem;
+    
+    /* Custom Brand Variables - shadcn Colors */
+    --brand-primary: 217.2 32.6% 17.5%;     /* Darker slate for primary elements */
+    --brand-secondary: 215.3 25% 26.7%;     /* Medium slate for secondary elements */
+    --brand-background: 0 0% 98%;            /* Off-white background */
+    --brand-foreground: 217.2 32.6% 17.5%;  /* Dark text */
+    --brand-muted: 215.3 25% 26.7%;         /* Muted elements */
+  }
+
+  .dark {
+    --background: 217.2 32.6% 17.5%;
+    --foreground: 0 0% 98%;
+    --card: 217.2 32.6% 17.5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 217.2 32.6% 17.5%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 217.2 32.6% 17.5%;
+    --secondary: 215.3 25% 26.7%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215.3 25% 26.7%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 215.3 25% 26.7%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215.3 25% 26.7%;
+    --input: 215.3 25% 26.7%;
+    --ring: 215.3 25% 26.7%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Brand Color Classes - shadcn System */
+.bg-brand-primary { background-color: hsl(var(--brand-primary)); }
+.bg-brand-secondary { background-color: hsl(var(--brand-secondary)); }
+.bg-brand-background { background-color: hsl(var(--brand-background)); }
+.text-brand-primary { color: hsl(var(--brand-primary)); }
+.text-brand-secondary { color: hsl(var(--brand-secondary)); }
+.text-brand-background { color: hsl(var(--brand-background)); }
+.border-brand-secondary { border-color: hsl(var(--brand-secondary)); }
+
+/* Enhanced Backdrop Blur with Brand Colors */
+.backdrop-blur-glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: hsla(var(--brand-background), 0.85);
+  border: 1px solid hsla(var(--brand-secondary), 0.1);
+}
+
+/* Modern Glass Card Effect with Brand Theme */
+.glass-effect {
+  background: hsla(var(--brand-background), 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid hsla(var(--brand-secondary), 0.15);
+  box-shadow: 0 8px 32px 0 hsla(var(--brand-primary), 0.1);
+}
+
+/* Brand Gradient Backgrounds */
+.gradient-bg-hero {
+  background: linear-gradient(135deg, 
+    hsl(var(--brand-secondary)) 0%, 
+    hsl(var(--brand-primary)) 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.gradient-bg-primary {
+  background: linear-gradient(135deg, 
+    hsl(var(--brand-secondary)) 0%, 
+    hsl(var(--brand-primary)) 100%);
+}
+
+.gradient-bg-secondary {
+  background: linear-gradient(135deg, 
+    hsl(var(--brand-background)) 0%, 
+    hsla(var(--brand-secondary), 0.05) 50%,
+    hsl(var(--brand-background)) 100%);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Light theme gradients with brand colors */
+.gradient-light-brand {
+  background: linear-gradient(135deg, 
+    hsl(var(--brand-background)) 0%, 
+    hsla(var(--brand-secondary), 0.03) 25%, 
+    hsla(var(--brand-secondary), 0.05) 50%, 
+    hsla(var(--brand-secondary), 0.03) 75%,
+    hsl(var(--brand-background)) 100%);
+}
+
+/* Dark section styling with brand colors */
+.dark-section {
+  background: linear-gradient(135deg, 
+    hsl(var(--brand-primary)) 0%, 
+    hsl(var(--brand-secondary)) 50%, 
+    hsl(var(--brand-primary)) 100%);
+}
+
+/* Button Styles with Brand Colors */
+.btn-brand-primary {
+  background: hsl(var(--brand-primary));
+  color: hsl(var(--brand-background));
+  border: 1px solid hsl(var(--brand-primary));
+  transition: all 0.3s ease;
+}
+
+.btn-brand-primary:hover {
+  background: hsl(var(--brand-secondary));
+  border-color: hsl(var(--brand-secondary));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsla(var(--brand-secondary), 0.25);
+}
+
+.btn-brand-secondary {
+  background: hsl(var(--brand-secondary));
+  color: hsl(var(--brand-background));
+  border: 1px solid hsl(var(--brand-secondary));
+  transition: all 0.3s ease;
+}
+
+.btn-brand-secondary:hover {
+  background: hsl(var(--brand-primary));
+  border-color: hsl(var(--brand-primary));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsla(var(--brand-primary), 0.25);
+}
+
+.btn-brand-outline {
+  background: transparent;
+  color: hsl(var(--brand-primary));
+  border: 1px solid hsl(var(--brand-secondary));
+  transition: all 0.3s ease;
+}
+
+.btn-brand-outline:hover {
+  background: hsl(var(--brand-secondary));
+  color: hsl(var(--brand-background));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsla(var(--brand-secondary), 0.25);
+}
+
+/* Icon Colors */
+.icon-brand-secondary { color: hsl(var(--brand-secondary)); }
+.icon-brand-primary { color: hsl(var(--brand-primary)); }
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsla(var(--brand-secondary), 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px hsla(var(--brand-secondary), 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes morphing {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+/* Enhanced hover effects with brand colors */
+@keyframes buttonHover {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px hsla(var(--brand-secondary), 0.15);
+  }
+  100% {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px hsla(var(--brand-secondary), 0.25);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsla(var(--brand-secondary), 0.1),
+    transparent
+  );
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+  animation: rotate 20s linear infinite;
+}
+
+.animate-morphing {
+  animation: morphing 8s ease-in-out infinite;
+}
+
+.animate-button-hover {
+  animation: buttonHover 0.3s ease-out;
+}
+
+/* Scrollbar with brand colors */
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--brand-background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, hsl(var(--brand-secondary)), hsl(var(--brand-primary)));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, hsl(var(--brand-primary)), hsl(var(--brand-secondary)));
+}
+
+/* Selection with brand colors */
+::selection {
+  background-color: hsla(var(--brand-secondary), 0.2);
+  color: hsl(var(--brand-primary));
+}
+
+/* Modern button base with brand styling */
+.btn-modern {
+  @apply relative overflow-hidden transition-all duration-300 ease-out;
+  background: hsl(var(--brand-primary));
+  color: hsl(var(--brand-background));
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsla(var(--brand-secondary), 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* Card hover effects with brand colors */
+.card-hover {
+  transition: all 0.3s ease;
+  border: 1px solid hsla(var(--brand-secondary), 0.1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px hsla(var(--brand-primary), 0.1);
+  border-color: hsla(var(--brand-secondary), 0.2);
+}
+
+/* Text gradient with brand colors */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--brand-primary)),
+    hsl(var(--brand-secondary))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Loading animation with brand colors */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(var(--brand-secondary));
+  margin: 0 2px;
+  animation: loading-bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes loading-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Focus styles with brand colors */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--brand-secondary));
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .glass-effect {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+} 
