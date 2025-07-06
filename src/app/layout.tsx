@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -9,7 +9,11 @@ export const metadata: Metadata = {
   description: 'We build data-driven, AI-powered web and mobile experiences. Specializing in AI/ML, Data Science, Web & App Development.',
   keywords: ['AI', 'ML', 'Data Science', 'Web Development', 'App Development', 'VAIBRANT'],
   authors: [{ name: 'VAIBRANT' }],
-  viewport: 'width=device-width, initial-scale=1',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({

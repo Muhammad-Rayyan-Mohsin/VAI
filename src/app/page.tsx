@@ -74,19 +74,19 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <a href="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center">
                 <span className="text-brand-background text-sm font-bold">V</span>
               </div>
               <div className="text-xl font-semibold text-brand-primary">VAIBRANT</div>
-            </div>
+            </a>
             <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-primary/70">
               <a href="#services" className="hover:text-brand-primary transition-colors py-2">How it works</a>
               <a href="#expertise" className="hover:text-brand-primary transition-colors py-2">Use cases</a>
-              <a href="#pricing" className="hover:text-brand-primary transition-colors py-2">Pricing</a>
-              <a href="#enterprise" className="hover:text-brand-primary transition-colors py-2">Enterprise</a>
-              <a href="#help" className="hover:text-brand-primary transition-colors py-2">Help</a>
-              <a href="#careers" className="hover:text-brand-primary transition-colors py-2">Careers</a>
+              <a href="/pricing" className="hover:text-brand-primary transition-colors py-2">Pricing</a>
+              <a href="/enterprise" className="hover:text-brand-primary transition-colors py-2">Enterprise</a>
+              <a href="/help" className="hover:text-brand-primary transition-colors py-2">Help</a>
+              <a href="/careers" className="hover:text-brand-primary transition-colors py-2">Careers</a>
             </div>
             <div className="flex items-center space-x-3">
               <Button variant="ghost" className="text-brand-primary/70 hover:text-brand-primary font-medium">
@@ -394,7 +394,10 @@ export default function Home() {
             <Button className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-8 py-3 text-lg font-semibold">
               Start Your Project
             </Button>
-            <Button className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-8 py-3 text-lg font-semibold transition-all duration-300">
+            <Button 
+              className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-8 py-3 text-lg font-semibold transition-all duration-300"
+              onClick={() => window.open('https://calendly.com/usmanabbas5030', '_blank')}
+            >
               Schedule Consultation
             </Button>
           </div>
