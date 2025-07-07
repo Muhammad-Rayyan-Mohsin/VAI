@@ -131,7 +131,7 @@ export default function Home() {
             <TextHoverEffect text="VAIBRANT" />
           </motion.div>
           
-          <motion.h2 
+          <motion.h1 
             className="text-3xl md:text-4xl font-bold text-brand-primary mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,7 +140,7 @@ export default function Home() {
             <Cover>AI-Powered</Cover> Solutions.
             <br />
             <span className="text-brand-secondary">Built for Tomorrow.</span>
-          </motion.h2>
+          </motion.h1>
           
           <motion.p 
             className="text-xl text-brand-primary/70 mb-8 max-w-2xl mx-auto leading-relaxed"

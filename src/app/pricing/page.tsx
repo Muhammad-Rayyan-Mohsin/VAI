@@ -1,3 +1,34 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Pricing Plans - VAIBRANT AI Solutions',
+  description: 'Simple, transparent pricing for AI, Machine Learning, and Data Science services. Choose from Starter, Professional, or Enterprise plans to fit your business needs.',
+  keywords: [
+    'AI pricing',
+    'Machine Learning costs',
+    'Data Science pricing',
+    'AI consulting rates',
+    'Enterprise AI pricing',
+    'Custom AI solutions cost',
+    'ML model pricing',
+    'Business automation costs'
+  ],
+  openGraph: {
+    title: 'Pricing Plans - VAIBRANT AI Solutions',
+    description: 'Simple, transparent pricing for AI and ML services. Plans starting at $99/month.',
+    url: '/pricing',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pricing Plans - VAIBRANT AI Solutions',
+    description: 'Simple, transparent pricing for AI and ML services. Plans starting at $99/month.',
+  },
+  alternates: {
+    canonical: '/pricing',
+  },
+}
+
 'use client'
 
 import { useState } from 'react'

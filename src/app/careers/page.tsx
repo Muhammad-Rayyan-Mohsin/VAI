@@ -1,3 +1,36 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Careers - Join VAIBRANT AI Team',
+  description: 'Join VAIBRANT and build the future of AI. We\'re hiring AI Engineers, Data Scientists, Developers, and more. Remote work, competitive benefits, innovative projects.',
+  keywords: [
+    'AI jobs',
+    'Machine Learning careers',
+    'Data Science jobs',
+    'AI Engineer positions',
+    'Tech careers',
+    'Remote AI jobs',
+    'ML Engineer jobs',
+    'Data Scientist hiring',
+    'AI startup jobs',
+    'Technology careers'
+  ],
+  openGraph: {
+    title: 'Careers - Join VAIBRANT AI Team',
+    description: 'Join VAIBRANT and build the future of AI. Remote work, competitive benefits, innovative projects.',
+    url: '/careers',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Careers - Join VAIBRANT AI Team',
+    description: 'Join VAIBRANT and build the future of AI. Remote work, competitive benefits, innovative projects.',
+  },
+  alternates: {
+    canonical: '/careers',
+  },
+}
+
 'use client'
 
 import { useState } from 'react'

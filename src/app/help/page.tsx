@@ -1,3 +1,36 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Help Center - VAIBRANT Support & Documentation',
+  description: 'Get help with VAIBRANT AI solutions. Find documentation, FAQs, tutorials, and support for Machine Learning, Data Science, and AI implementation.',
+  keywords: [
+    'AI help',
+    'Machine Learning support',
+    'AI documentation',
+    'ML tutorials',
+    'Data Science help',
+    'AI implementation guide',
+    'Technical support',
+    'API documentation',
+    'AI troubleshooting',
+    'Customer support'
+  ],
+  openGraph: {
+    title: 'Help Center - VAIBRANT Support & Documentation',
+    description: 'Get help with VAIBRANT AI solutions. Documentation, FAQs, and support for all your AI needs.',
+    url: '/help',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Help Center - VAIBRANT Support & Documentation',
+    description: 'Get help with VAIBRANT AI solutions. Documentation, FAQs, and support for all your AI needs.',
+  },
+  alternates: {
+    canonical: '/help',
+  },
+}
+
 'use client'
 
 import { useState } from 'react'

@@ -3,6 +3,11 @@ const nextConfig = {
   // Performance optimizations
   compress: true,
   
+  // SEO optimizations
+  generateEtags: true,
+  trailingSlash: false,
+  poweredByHeader: false,
+  
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -70,6 +75,14 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          },
         ],
       },
       {
@@ -82,6 +95,17 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  
+  // SEO redirects
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+    ]
   },
 }
 
