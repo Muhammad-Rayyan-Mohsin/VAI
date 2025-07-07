@@ -1,36 +1,3 @@
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Enterprise AI Solutions - VAIBRANT',
-  description: 'Enterprise-grade AI, ML, and Data Science solutions for Fortune 500 companies. SOC 2 compliant, GDPR ready, with 24/7 support and dedicated teams.',
-  keywords: [
-    'Enterprise AI',
-    'Fortune 500 AI solutions',
-    'Enterprise Machine Learning',
-    'Corporate Data Science',
-    'Enterprise automation',
-    'B2B AI consulting',
-    'Large scale AI deployment',
-    'Enterprise AI security',
-    'Custom AI development',
-    'AI transformation services'
-  ],
-  openGraph: {
-    title: 'Enterprise AI Solutions - VAIBRANT',
-    description: 'Enterprise-grade AI solutions for Fortune 500 companies. SOC 2 compliant with dedicated support.',
-    url: '/enterprise',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Enterprise AI Solutions - VAIBRANT',
-    description: 'Enterprise-grade AI solutions for Fortune 500 companies. SOC 2 compliant with dedicated support.',
-  },
-  alternates: {
-    canonical: '/enterprise',
-  },
-}
-
 'use client'
 
 import { useState } from 'react'
