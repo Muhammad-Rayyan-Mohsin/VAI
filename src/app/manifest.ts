@@ -35,13 +35,11 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/screenshot-wide.png',
         sizes: '1280x720',
         type: 'image/png',
-        form_factor: 'wide',
       },
       {
         src: '/screenshot-narrow.png',
         sizes: '640x1136',
         type: 'image/png',
-        form_factor: 'narrow',
       },
     ],
   }
