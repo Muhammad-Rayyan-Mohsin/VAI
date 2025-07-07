@@ -30,7 +30,7 @@ export const TextHoverEffect = ({
   const textStyle = {
     fontFamily: 'Inter, helvetica, sans-serif',
     fontSize: '48px',
-    fontWeight: '900',
+    fontWeight: '600',
     fill: 'transparent',
     strokeWidth: '1.2',
   };
