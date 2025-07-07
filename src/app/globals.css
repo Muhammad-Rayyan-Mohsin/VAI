@@ -71,6 +71,36 @@
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Performance optimizations */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Reduce repaints and improve scroll performance */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Optimize transforms for better performance */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-auto {
+    will-change: auto;
+  }
+  
+  /* Hardware acceleration for animated elements */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
@@ -123,9 +153,18 @@
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { 
+    background-position: 0% 50%; 
+    transform: translateZ(0);
+  }
+  50% { 
+    background-position: 100% 50%; 
+    transform: translateZ(0);
+  }
+  100% { 
+    background-position: 0% 50%; 
+    transform: translateZ(0);
+  }
 }
 
 /* Light theme gradients with brand colors */
@@ -151,13 +190,14 @@
   background: hsl(var(--brand-primary));
   color: hsl(var(--brand-background));
   border: 1px solid hsl(var(--brand-primary));
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  will-change: transform;
 }
 
 .btn-brand-primary:hover {
   background: hsl(var(--brand-secondary));
   border-color: hsl(var(--brand-secondary));
-  transform: translateY(-1px);
+  transform: translateY(-1px) translateZ(0);
   box-shadow: 0 4px 12px hsla(var(--brand-secondary), 0.25);
 }
 
@@ -165,13 +205,14 @@
   background: hsl(var(--brand-secondary));
   color: hsl(var(--brand-background));
   border: 1px solid hsl(var(--brand-secondary));
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  will-change: transform;
 }
 
 .btn-brand-secondary:hover {
   background: hsl(var(--brand-primary));
   border-color: hsl(var(--brand-primary));
-  transform: translateY(-1px);
+  transform: translateY(-1px) translateZ(0);
   box-shadow: 0 4px 12px hsla(var(--brand-primary), 0.25);
 }
 
@@ -179,13 +220,14 @@
   background: transparent;
   color: hsl(var(--brand-primary));
   border: 1px solid hsl(var(--brand-secondary));
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  will-change: transform;
 }
 
 .btn-brand-outline:hover {
   background: hsl(var(--brand-secondary));
   color: hsl(var(--brand-background));
-  transform: translateY(-1px);
+  transform: translateY(-1px) translateZ(0);
   box-shadow: 0 4px 12px hsla(var(--brand-secondary), 0.25);
 }
 

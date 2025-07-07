@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -8,8 +8,10 @@ import GlassCard from '@/components/ui/glass-card'
 import { TextHoverEffect } from '@/components/ui/text-hover-effect'
 import { Cover } from '@/components/ui/cover'
 import { ContainerTextFlip } from '@/components/ui/container-text-flip'
-import { BackgroundBeams } from '@/components/ui/background-beams'
-import BentoGridDemo from '@/components/bento-grid-demo'
+
+// Lazy load heavy components
+const BackgroundBeams = lazy(() => import('@/components/ui/background-beams').then(module => ({ default: module.BackgroundBeams })))
+const BentoGridDemo = lazy(() => import('@/components/bento-grid-demo'))
 import { 
   Play,
   Users,
@@ -35,6 +37,8 @@ export default function Home() {
   useEffect(() => {
     setIsVisible(true)
 
+    let ticking = false
+    
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY
@@ -48,14 +52,22 @@ export default function Home() {
         }
         
         setLastScrollY(currentScrollY)
+        ticking = false
+      }
+    }
+
+    const throttledScrollHandler = () => {
+      if (!ticking) {
+        requestAnimationFrame(controlNavbar)
+        ticking = true
       }
     }
 
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar)
+      window.addEventListener('scroll', throttledScrollHandler, { passive: true })
       
       return () => {
-        window.removeEventListener('scroll', controlNavbar)
+        window.removeEventListener('scroll', throttledScrollHandler)
       }
     }
   }, [lastScrollY])
@@ -105,34 +117,36 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 relative overflow-hidden">
-        <BackgroundBeams className="opacity-30" />
+        <Suspense fallback={<div className="absolute inset-0 opacity-30" />}>
+          <BackgroundBeams className="opacity-30" />
+        </Suspense>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           {/* Interactive Text Hover Effect */}
           <motion.div
             className="mb-8"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <TextHoverEffect text="VAIBRANT" />
           </motion.div>
           
-          <motion.h2 
+          <motion.h1 
             className="text-3xl md:text-4xl font-bold text-brand-primary mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           >
             <Cover>AI-Powered</Cover> Solutions.
             <br />
             <span className="text-brand-secondary">Built for Tomorrow.</span>
-          </motion.h2>
+          </motion.h1>
           
           <motion.p 
             className="text-xl text-brand-primary/70 mb-8 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Expert services in AI, Machine Learning, Data Science, and Web Development. 
             We transform your ideas into intelligent, automated solutions that drive real business value.
@@ -140,9 +154,9 @@ export default function Home() {
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             <Button className="btn-brand-primary rounded-full px-8 py-3 text-lg">
               Start Your Project
@@ -156,9 +170,9 @@ export default function Home() {
           {/* Hero Dashboard Preview */}
           <motion.div
             className="relative max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           >
             <GlassCard className="p-8 bg-white/60 backdrop-blur-sm border border-white/20">
               <div className="bg-gray-100 rounded-lg p-6 mb-6">
@@ -230,7 +244,13 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <BentoGridDemo />
+            <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="h-32 bg-gray-200 rounded-lg"></div>
+              ))}
+            </div>}>
+              <BentoGridDemo />
+            </Suspense>
           </motion.div>
         </div>
       </section>

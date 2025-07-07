@@ -1,1 +1,14 @@
-{}
+{
+  "app\\page.tsx -> @/components/bento-grid-demo": {
+    "id": "app\\page.tsx -> @/components/bento-grid-demo",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_bento-grid-demo_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> @/components/ui/background-beams": {
+    "id": "app\\page.tsx -> @/components/ui/background-beams",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_ui_background-beams_tsx.js"
+    ]
+  }
+}

@@ -14,17 +14,32 @@ export const TextHoverEffect = ({
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const animationFrameRef = useRef<number>();
 
   useEffect(() => {
     if (svgRef.current && cursor.x !== null && cursor.y !== null) {
-      const svgRect = svgRef.current.getBoundingClientRect();
-      const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
-      const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
-      setMaskPosition({
-        cx: `${cxPercentage}%`,
-        cy: `${cyPercentage}%`,
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      
+      animationFrameRef.current = requestAnimationFrame(() => {
+        if (svgRef.current) {
+          const svgRect = svgRef.current.getBoundingClientRect();
+          const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
+          const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
+          setMaskPosition({
+            cx: `${Math.max(0, Math.min(100, cxPercentage))}%`,
+            cy: `${Math.max(0, Math.min(100, cyPercentage))}%`,
+          });
+        }
       });
     }
+    
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
   }, [cursor]);
 
   const textStyle = {

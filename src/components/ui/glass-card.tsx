@@ -15,7 +15,7 @@ export default function GlassCard({
   children, 
   className = '', 
   intensity = 'medium',
-  hover3d = true 
+  hover3d = false 
 }: GlassCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
@@ -38,7 +38,7 @@ export default function GlassCard({
   )
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return
+    if (!ref.current || !hover3d) return
 
     const rect = ref.current.getBoundingClientRect()
     const width = rect.width
@@ -46,8 +46,8 @@ export default function GlassCard({
     const mouseX = e.clientX - rect.left
     const mouseY = e.clientY - rect.top
 
-    const xPct = mouseX / width - 0.5
-    const yPct = mouseY / height - 0.5
+    const xPct = Math.max(-0.5, Math.min(0.5, mouseX / width - 0.5))
+    const yPct = Math.max(-0.5, Math.min(0.5, mouseY / height - 0.5))
 
     x.set(xPct)
     y.set(yPct)
@@ -68,7 +68,7 @@ export default function GlassCard({
   return (
     <motion.div
       ref={ref}
-      onMouseMove={handleMouseMove}
+      onMouseMove={hover3d ? handleMouseMove : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={hover3d ? {
@@ -77,31 +77,35 @@ export default function GlassCard({
         transformStyle: "preserve-3d",
       } : {}}
       className={cn(
-        "relative rounded-2xl border shadow-xl transition-all duration-300",
+        "relative rounded-2xl border shadow-xl will-change-transform",
         intensityClasses[intensity],
-        isHovered && "shadow-2xl scale-105",
+        hover3d ? "transition-shadow duration-200" : "transition-all duration-200",
+        isHovered && hover3d && "shadow-2xl",
+        isHovered && !hover3d && "shadow-2xl scale-[1.02]",
         className
       )}
-      whileHover={{ scale: hover3d ? 1 : 1.02 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      whileHover={hover3d ? {} : { scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
       
-      {/* Shimmer effect */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-        animate={isHovered ? {
-          opacity: [0, 1, 0],
-          x: ['-100%', '100%']
-        } : {}}
-        transition={{ duration: 0.6 }}
-      />
+      {/* Shimmer effect - only render when hovered for performance */}
+      {isHovered && (
+        <motion.div
+          className="absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          animate={{
+            opacity: [0, 1, 0],
+            x: ['-100%', '100%']
+          }}
+          transition={{ duration: 0.5 }}
+        />
+      )}
       
       {/* Content */}
       <div 
         className="relative z-10 p-6"
-        style={hover3d ? { transform: "translateZ(75px)" } : {}}
+        style={hover3d ? { transform: "translateZ(50px)" } : {}}
       >
         {children}
       </div>
