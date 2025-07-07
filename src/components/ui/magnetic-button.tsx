@@ -30,8 +30,9 @@ export default function MagneticButton({
   const springX = useSpring(x, { stiffness: 300, damping: 30 })
   const springY = useSpring(y, { stiffness: 300, damping: 30 })
 
-  const rotateX = useTransform(springY, [-0.5, 0.5], ["7.5deg", "-7.5deg"])
-  const rotateY = useTransform(springX, [-0.5, 0.5], ["-7.5deg", "7.5deg"])
+  // 3D tilt effects disabled for performance
+  // const rotateX = useTransform(springY, [-0.5, 0.5], ["7.5deg", "-7.5deg"])
+  // const rotateY = useTransform(springX, [-0.5, 0.5], ["-7.5deg", "7.5deg"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!ref.current) return
@@ -77,9 +78,6 @@ export default function MagneticButton({
       style={{
         x: springX,
         y: springY,
-        rotateX: rotateX,
-        rotateY: rotateY,
-        transformStyle: "preserve-3d",
       }}
       className={cn(
         "relative rounded-lg font-medium transition-all duration-300 border-2 overflow-hidden",
@@ -108,7 +106,6 @@ export default function MagneticButton({
       {/* Content */}
       <span 
         className="relative z-10 block"
-        style={{ transform: "translateZ(20px)" }}
       >
         {children}
       </span>
