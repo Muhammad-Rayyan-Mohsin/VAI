@@ -91,7 +91,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="scale-110 sm:scale-100">
+            <div className="scale-150 sm:scale-100 h-20 sm:h-auto overflow-visible">
               <TextHoverEffect text="VAIBRANT" />
             </div>
           </motion.div>
@@ -149,10 +149,148 @@ export default function Home() {
                   </div>
                   <div className="text-xs sm:text-sm text-gray-500 hidden sm:block">vaibrant.io/dashboard</div>
                 </div>
-                <div className="space-y-2 sm:space-y-3">
-                  <div className="h-3 sm:h-4 bg-gradient-to-r from-blue-300 to-purple-300 rounded w-3/4"></div>
-                  <div className="h-3 sm:h-4 bg-gradient-to-r from-green-300 to-blue-300 rounded w-1/2"></div>
-                  <div className="h-3 sm:h-4 bg-gradient-to-r from-purple-300 to-pink-300 rounded w-2/3"></div>
+                
+                {/* Insights to Decisions SVG */}
+                <div className="relative h-24 sm:h-32 md:h-36">
+                  <svg className="w-full h-full" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="insightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#93c5fd" />
+                        <stop offset="100%" stopColor="#a78bfa" />
+                      </linearGradient>
+                      <linearGradient id="decisionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#86efac" />
+                        <stop offset="100%" stopColor="#7dd3fc" />
+                      </linearGradient>
+                      <linearGradient id="actionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#c084fc" />
+                        <stop offset="100%" stopColor="#f472b6" />
+                      </linearGradient>
+                      <filter id="lightGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge> 
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    
+                    {/* Data Points flowing in */}
+                    <g opacity="0.7">
+                      <circle cx="30" cy="35" r="3" fill="#64748b">
+                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                      </circle>
+                      <circle cx="30" cy="60" r="2.5" fill="#64748b">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+                      </circle>
+                      <circle cx="30" cy="85" r="3" fill="#64748b">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+                      </circle>
+                    </g>
+                    
+                    {/* Insight Lightbulb Moment */}
+                    <g transform="translate(110, 45)">
+                      {/* Lightbulb base */}
+                      <rect x="10" y="25" width="12" height="6" rx="2" fill="#fbbf24" opacity="0.8"/>
+                      
+                      {/* Lightbulb bulb */}
+                      <ellipse cx="16" cy="16" rx="9" ry="12" fill="url(#insightGradient)" opacity="0.9" filter="url(#lightGlow)">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                      </ellipse>
+                      
+                      {/* Light rays */}
+                      <g opacity="0.8">
+                        <line x1="16" y1="0" x2="16" y2="6" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="28" y1="8" x2="24" y2="10" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="32" y1="18" x2="26" y2="18" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="28" y1="28" x2="24" y2="26" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="4" y1="8" x2="8" y2="10" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.1s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="0" y1="18" x2="6" y2="18" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.3s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="4" y1="28" x2="8" y2="26" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.9s" repeatCount="indefinite"/>
+                        </line>
+                      </g>
+                      
+                      {/* "Insight" label */}
+                      <text x="16" y="45" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="600">Insight</text>
+                    </g>
+                    
+                    {/* Decision Diamond */}
+                    <g transform="translate(210, 50)">
+                      <polygon points="15,0 30,12 15,24 0,12" fill="url(#decisionGradient)" opacity="0.9">
+                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+                      </polygon>
+                      <text x="15" y="16" fontSize="12" fill="white" textAnchor="middle" fontWeight="700">?</text>
+                      <text x="15" y="40" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="600">Decision</text>
+                    </g>
+                    
+                    {/* Action Paths */}
+                    <g transform="translate(310, 35)">
+                      {/* Action 1 */}
+                      <rect x="0" y="0" width="35" height="12" rx="6" fill="url(#actionGradient)" opacity="0.8">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                      </rect>
+                      <text x="17.5" y="8" fontSize="6" fill="white" textAnchor="middle" fontWeight="700">Execute</text>
+                      
+                      {/* Action 2 */}
+                      <rect x="0" y="25" width="35" height="12" rx="6" fill="url(#actionGradient)" opacity="0.8">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2.3s" repeatCount="indefinite"/>
+                      </rect>
+                      <text x="17.5" y="33" fontSize="6" fill="white" textAnchor="middle" fontWeight="700">Optimize</text>
+                      
+                      <text x="17.5" y="50" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="600">Actions</text>
+                    </g>
+                    
+                    {/* Flow Arrows */}
+                    <g stroke="#94a3b8" strokeWidth="2.5" fill="none" opacity="0.8">
+                      {/* Data to Insight */}
+                      <path d="M 55 60 L 100 60" strokeLinecap="round" markerEnd="url(#arrowMarker)">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                      </path>
+                      
+                      {/* Insight to Decision */}
+                      <path d="M 145 62 L 200 62" strokeLinecap="round" markerEnd="url(#arrowMarker)">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.2s" repeatCount="indefinite"/>
+                      </path>
+                      
+                      {/* Decision to Actions */}
+                      <path d="M 245 58 L 300 42" strokeLinecap="round" markerEnd="url(#arrowMarker)">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+                      </path>
+                      <path d="M 245 66 L 300 52" strokeLinecap="round" markerEnd="url(#arrowMarker)">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.1s" repeatCount="indefinite"/>
+                      </path>
+                    </g>
+                    
+                    {/* Arrow marker definition */}
+                    <defs>
+                      <marker id="arrowMarker" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+                        <path d="M0,0 L0,8 L8,4 z" fill="#94a3b8"/>
+                      </marker>
+                    </defs>
+                    
+                    {/* Flowing insight particles */}
+                    <circle cx="60" cy="45" r="1.5" fill="#a78bfa" opacity="0.6">
+                      <animateTransform attributeName="transform" type="translate" values="0,0; 50,8; 100,15" dur="4s" repeatCount="indefinite"/>
+                      <animate attributeName="opacity" values="0.6;1;0" dur="4s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="60" cy="75" r="1.5" fill="#7dd3fc" opacity="0.7">
+                      <animateTransform attributeName="transform" type="translate" values="0,0; 60,0; 120,-8" dur="4.5s" repeatCount="indefinite"/>
+                      <animate attributeName="opacity" values="0.7;1;0" dur="4.5s" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
                 </div>
               </div>
               <div className="text-center text-brand-primary/70">
