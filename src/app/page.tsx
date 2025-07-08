@@ -91,7 +91,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="scale-75 sm:scale-100">
+            <div className="scale-110 sm:scale-100">
               <TextHoverEffect text="VAIBRANT" />
             </div>
           </motion.div>
