@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import GlassCard from '@/components/ui/glass-card'
+import Navigation from '@/components/ui/navigation'
 import { 
   Search,
   ChevronDown,
@@ -91,39 +92,13 @@ export default function Help() {
   return (
     <div className="min-h-screen gradient-light-brand">
       {/* Navigation */}
-      <motion.nav 
-        className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/90 border-b border-gray-200/50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-3">
-          <div className="flex items-center justify-between">
-            <a href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center">
-                <span className="text-brand-background text-sm font-bold">V</span>
-              </div>
-              <div className="text-xl font-semibold text-brand-primary">VAIBRANT</div>
-            </a>
-            <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-primary/70">
-              <a href="/#services" className="hover:text-brand-primary transition-colors py-2">How it works</a>
-              <a href="/#expertise" className="hover:text-brand-primary transition-colors py-2">Use cases</a>
-              <a href="/pricing" className="hover:text-brand-primary transition-colors py-2">Pricing</a>
-              <a href="/enterprise" className="hover:text-brand-primary transition-colors py-2">Enterprise</a>
-              <a href="/help" className="text-brand-primary py-2">Help</a>
-              <a href="/careers" className="hover:text-brand-primary transition-colors py-2">Careers</a>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Button variant="ghost" className="text-brand-primary/70 hover:text-brand-primary font-medium">
-                Log in
-              </Button>
-              <Button className="btn-brand-primary rounded-lg px-4 py-2 text-sm font-medium">
-                Contact Support
-              </Button>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
+      <Navigation 
+        currentPath="/help" 
+        actionButton={{
+          text: 'Contact Support',
+          onClick: () => console.log('Contact Support clicked')
+        }}
+      />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">

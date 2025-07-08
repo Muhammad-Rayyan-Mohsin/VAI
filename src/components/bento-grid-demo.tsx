@@ -13,7 +13,7 @@ import {
 
 export default function BentoGridDemo() {
   return (
-    <BentoGrid className="max-w-6xl mx-auto md:grid-cols-6">
+    <BentoGrid className="max-w-6xl mx-auto sm:grid-cols-2 md:grid-cols-6">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -22,9 +22,9 @@ export default function BentoGridDemo() {
           header={item.header}
           icon={item.icon}
           className={
-            i < 3 ? "md:col-span-2" : 
-            i === 3 ? "md:col-span-3" : 
-            "md:col-span-3"
+            i < 3 ? "sm:col-span-1 md:col-span-2" : 
+            i === 3 ? "sm:col-span-2 md:col-span-3" : 
+            "sm:col-span-2 md:col-span-3"
           }
         />
       ))}
