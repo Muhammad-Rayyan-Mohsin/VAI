@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import GlassCard from '@/components/ui/glass-card'
 import Navigation from '@/components/ui/navigation'
 import LampDemo from '@/components/lamp-demo'
+import AppleCardsCarouselDemo from '@/components/apple-cards-carousel-demo'
 import { 
   Code,
   Database,
@@ -19,6 +20,7 @@ import {
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [viewMode, setViewMode] = useState<'grid' | 'carousel'>('carousel')
 
   const categories = ['All', 'Automation', 'Data', 'APIs', 'Web Apps']
 
@@ -146,43 +148,80 @@ interface Project {
         <LampDemo />
       </section>
 
+      {/* Projects Showcase - Carousel */}
+      <section className="bg-white">
+        <AppleCardsCarouselDemo />
+      </section>
+
       {/* Filter Section */}
       <section className="py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            className="flex flex-wrap justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {categories.map((category) => (
+          <div className="flex justify-between items-center mb-8">
+            <motion.div
+              className="flex flex-wrap gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`rounded-full px-6 py-2 text-sm font-medium transition-all ${
+                    selectedCategory === category
+                      ? 'bg-black text-white hover:bg-gray-800'
+                      : 'bg-white text-black border border-gray-300 hover:bg-gray-100'
+                  }`}
+                >
+                  {category}
+                </Button>
+              ))}
+            </motion.div>
+            
+            <motion.div
+              className="flex gap-2"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <Button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`rounded-full px-6 py-2 text-sm font-medium transition-all ${
-                  selectedCategory === category
-                    ? 'bg-black text-white hover:bg-gray-800'
-                    : 'bg-white text-black border border-gray-300 hover:bg-gray-100'
+                onClick={() => setViewMode('carousel')}
+                className={`px-4 py-2 text-sm rounded-lg transition-all ${
+                  viewMode === 'carousel'
+                    ? 'bg-black text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
-                {category}
+                Carousel View
               </Button>
-            ))}
-          </motion.div>
+              <Button
+                onClick={() => setViewMode('grid')}
+                className={`px-4 py-2 text-sm rounded-lg transition-all ${
+                  viewMode === 'grid'
+                    ? 'bg-black text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                Grid View
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+      {viewMode === 'grid' && (
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
             {filteredProjects.map((project, projectIndex) => (
               <motion.div
                 key={project.id}
@@ -316,6 +355,7 @@ interface Project {
           )}
         </div>
       </section>
+      )}
 
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
