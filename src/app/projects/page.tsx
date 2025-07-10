@@ -147,7 +147,7 @@ interface Project {
       </div>
 
       {/* Hero Section with Lamp */}
-      <section className="relative">
+      <section className="relative overflow-visible">
         <LampDemo />
       </section>
 
