@@ -9,6 +9,7 @@ import { TextHoverEffect } from '@/components/ui/text-hover-effect'
 import { Cover } from '@/components/ui/cover'
 import { ContainerTextFlip } from '@/components/ui/container-text-flip'
 import Navigation from '@/components/ui/navigation'
+import StartProjectModal from '@/components/ui/start-project-modal'
 
 // Lazy load heavy components
 const BackgroundBeams = lazy(() => import('@/components/ui/background-beams').then(module => ({ default: module.BackgroundBeams })))
@@ -34,6 +35,7 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [showNav, setShowNav] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     setIsVisible(true)
@@ -123,7 +125,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
-            <Button className="btn-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto">
+            <Button 
+              onClick={() => setIsModalOpen(true)}
+              className="btn-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto"
+            >
               Start Your Project
             </Button>
             <Button className="btn-brand-outline rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
@@ -516,7 +521,10 @@ export default function Home() {
             Let's discuss your project and build intelligent solutions that drive real business value.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
-            <Button className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto">
+            <Button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto"
+            >
               Start Your Project
             </Button>
             <Button 
@@ -592,6 +600,12 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Start Project Modal */}
+      <StartProjectModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   )
 } 

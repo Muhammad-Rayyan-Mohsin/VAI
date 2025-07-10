@@ -69,7 +69,7 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
     <motion.nav 
       className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/90 border-b border-gray-200/50"
       initial={{ y: 0 }}
-      animate={{ y: showNav && scrollDirection === 'up' ? 0 : -100 }}
+      animate={{ y: showNav ? 0 : (scrollDirection === 'up' ? 0 : -100) }}
       transition={{ 
         duration: 0.3, 
         ease: "easeInOut" 
@@ -115,7 +115,7 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors z-50 relative"
+            className="md:hidden p-3 rounded-lg hover:bg-gray-100 transition-colors z-[60] relative bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm"
             onClick={(e) => {
               e.stopPropagation()
               setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -127,9 +127,9 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
               transition={{ duration: 0.3 }}
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-brand-primary" />
+                <X className="h-6 w-6 text-black" />
               ) : (
-                <Menu className="h-6 w-6 text-brand-primary" />
+                <Menu className="h-6 w-6 text-black" />
               )}
             </motion.div>
           </button>
@@ -140,43 +140,44 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Background Blur Overlay */}
+            {/* Enhanced Background Blur Overlay - Full Screen */}
             <motion.div
-              className="md:hidden fixed inset-0 top-[70px] z-30 backdrop-blur-sm bg-black/20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              className="md:hidden fixed inset-0 z-30 backdrop-blur-md bg-black/40"
+              style={{
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+              }}
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
-            {/* Mobile Menu Content */}
+            {/* Mobile Menu Content - Positioned over blur */}
             <motion.div
-              className="md:hidden fixed inset-0 top-[70px] z-40"
+              className="md:hidden fixed inset-0 z-40 flex items-start justify-center pt-[70px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Menu Background - Solid white for readability */}
-              <div className="absolute inset-0 bg-white" />
-            
-            {/* Menu Content */}
+            {/* Menu Content Container with glass effect */}
             <motion.div
-              className="relative h-full flex flex-col"
-              initial={{ y: -20 }}
-              animate={{ y: 0 }}
-              exit={{ y: -20 }}
-              transition={{ duration: 0.3 }}
+              className="w-full max-w-sm mx-4 mt-4 bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-2xl overflow-hidden"
+              initial={{ y: -50, scale: 0.95 }}
+              animate={{ y: 0, scale: 1 }}
+              exit={{ y: -50, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               {/* Navigation Links */}
-              <div className="flex-1 px-6 py-8 space-y-2">
+              <div className="px-6 py-6 space-y-2">
                 {navigationLinks.map((link, index) => (
                   <motion.a
                     key={link.href}
                     href={link.href}
-                    className={`block py-4 px-4 text-lg font-medium rounded-lg transition-colors ${
+                    className={`block py-3 px-4 text-lg font-medium rounded-xl transition-colors ${
                       link.active 
                         ? 'text-brand-primary bg-brand-primary/10' 
                         : 'text-brand-primary/70 hover:text-brand-primary hover:bg-gray-50'
@@ -194,13 +195,13 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
               {/* Mobile Action Button */}
               {actionButton && (
                 <motion.div 
-                  className="px-6 py-6 border-t border-gray-200"
+                  className="px-6 pb-6 pt-2 border-t border-gray-200/50"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
                 >
                   <Button 
-                    className="w-full btn-brand-primary rounded-lg py-3 text-lg font-medium flex items-center justify-center gap-2"
+                    className="w-full btn-brand-primary rounded-xl py-3 text-lg font-medium flex items-center justify-center gap-2"
                     onClick={() => {
                       actionButton.onClick?.()
                       setIsMobileMenuOpen(false)
