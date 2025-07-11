@@ -376,7 +376,7 @@ export default function StartProjectModal({ isOpen, onClose }: StartProjectModal
                   id="selectedService"
                   value={formData.selectedService}
                   onChange={(e) => handleInputChange('selectedService', e.target.value)}
-                  className={`mt-1 w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black ${
+                  className={`mt-1 w-full px-3 py-2 bg-white text-gray-900 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black ${
                     errors.selectedService ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
                   }`}
                 >
@@ -402,7 +402,7 @@ export default function StartProjectModal({ isOpen, onClose }: StartProjectModal
                     id="estimatedBudget"
                     value={formData.estimatedBudget}
                     onChange={(e) => handleInputChange('estimatedBudget', e.target.value)}
-                    className={`mt-1 w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black ${
+                    className={`mt-1 w-full px-3 py-2 bg-white text-gray-900 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black ${
                       errors.estimatedBudget ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
                     }`}
                   >
@@ -426,7 +426,7 @@ export default function StartProjectModal({ isOpen, onClose }: StartProjectModal
                     id="projectTimeline"
                     value={formData.projectTimeline}
                     onChange={(e) => handleInputChange('projectTimeline', e.target.value)}
-                    className={`mt-1 w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black ${
+                    className={`mt-1 w-full px-3 py-2 bg-white text-gray-900 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black ${
                       errors.projectTimeline ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
                     }`}
                   >
