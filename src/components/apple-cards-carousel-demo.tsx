@@ -107,104 +107,120 @@ const ProjectDetailContent = ({
 const data: ProjectCardData[] = [
   {
     category: "Data Analytics",
-    title: "Enterprise Analytics Dashboard",
+    title: "Global E-Commerce Trends Analysis and Impact on Traditional Retail",
     src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <ProjectDetailContent 
-      description="Comprehensive analytics solution that transforms raw business data into actionable insights using advanced machine learning algorithms and real-time processing capabilities. This platform revolutionized how our client makes data-driven decisions across all departments."
-      outcomes={[
-        "40% faster decision making across all departments",
-        "60% reduction in manual reporting processes",
-        "Real-time data processing for instant insights",
-        "$2.3M annual cost savings through automation"
-      ]}
-      techStack={["React", "TypeScript", "Python", "TensorFlow", "PostgreSQL", "Apache Kafka", "Docker"]}
-      duration="6 months"
-      clientType="Fortune 500 Manufacturing Company"
-    />,
+    content: (
+      <ProjectDetailContent 
+        description="This project analyzes global e-commerce trends and their influence on traditional retail, using PCA, CLV calculation, and what-if analysis to explore impacts on sales and consumer behavior."
+        outcomes={[
+          "E-commerce sales have consistently grown, outpacing traditional retail",
+          "Key drivers: digital payments, mobile commerce, consumer convenience",
+          "PCA identified significant features like payment methods and delivery options",
+          "CLV analysis showed high value of repeat customers in e-commerce"
+        ]}
+        techStack={["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn", "Jupyter Notebook"]}
+        duration="3 months"
+        clientType="E-Commerce Research Initiative"
+      />
+    ),
   },
   {
-    category: "Industrial Automation",
-    title: "Smart Manufacturing Automation",
-    src: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <ProjectDetailContent 
-      description="End-to-end automation solution for manufacturing operations, featuring predictive maintenance, quality control, and resource optimization using IoT sensors and AI algorithms. This system transformed traditional manufacturing into a smart, connected operation."
-      outcomes={[
-        "75% reduction in manual tasks and human error",
-        "30% improvement in overall efficiency",
-        "Predictive maintenance reducing downtime by 45%",
-        "ROI of 340% within the first year"
-      ]}
-      techStack={["Node.js", "IoT Sensors", "Machine Learning", "Docker", "Kubernetes", "MQTT", "InfluxDB"]}
-      duration="8 months"
-      clientType="Mid-size Manufacturing Company"
-    />,
-  },
-  {
-    category: "System Integration",
-    title: "Multi-Platform API Integration",
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <ProjectDetailContent 
-      description="Complex API integration project connecting 15+ disparate systems including CRM, ERP, and third-party services to create a unified data ecosystem. This integration eliminated data silos and created a single source of truth for the organization."
-      outcomes={[
-        "15+ systems seamlessly integrated",
-        "Real-time data synchronization achieved",
-        "99.9% uptime with robust error handling",
-        "50% reduction in data inconsistencies"
-      ]}
-      techStack={["REST APIs", "GraphQL", "Redis", "MongoDB", "Microservices", "AWS Lambda", "API Gateway"]}
-      duration="4 months"
-      clientType="Fast-growing Technology Startup"
-    />,
+    category: "Automation",
+    title: "Automated Inbox Management System",
+    src: "https://substack-post-media.s3.amazonaws.com/public/images/fdc6c369-096e-487f-9a0c-968d85b995a7_989x382.png",
+    content: (
+      <ProjectDetailContent 
+        description="This project automates Gmail inbox management using n8n, with AI agents that auto-label, categorize, and smartly reply to emails by checking calendar availability and referencing personal goals in Supabase. The system is highly customizable for emotionally intelligent automation."
+        outcomes={[
+          "Automated email labeling and categorization",
+          "AI-powered smart replies considering calendar and goals",
+          "Auto-deletion of rejection emails for emotional well-being",
+          "Highly customizable workflows for personal needs",
+          "Applied to complex workflows with n8n integration"
+        ]}
+        techStack={["n8n", "Gmail API", "AI Agents", "Supabase", "Calendar Integration"]}
+        duration="Summer Project"
+        clientType="Personal Automation Initiative"
+      />
+    ),
   },
   {
     category: "AI & Machine Learning",
-    title: "AI Predictive Maintenance System",
-    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <ProjectDetailContent 
-      description="Advanced predictive maintenance system using sensor data and machine learning to forecast equipment failures up to 2 weeks in advance. This system revolutionized maintenance schedules and dramatically reduced unexpected downtime."
-      outcomes={[
-        "2 weeks early failure prediction accuracy",
-        "45% reduction in unplanned downtime",
-        "Cost savings of $2M annually",
-        "Maintenance efficiency improved by 60%"
-      ]}
-      techStack={["Python", "TensorFlow", "IoT Sensors", "Time Series Analysis", "Apache Kafka", "PostgreSQL"]}
-      duration="5 months"
-      clientType="Industrial Equipment Manufacturer"
-    />,
+    title: "Energy Demand Analysis and Forecasting",
+    src: "https://upload.wikimedia.org/wikipedia/commons/3/3a/World_energy_consumption.svg",
+    content: (
+      <ProjectDetailContent 
+        description="This project analyzes energy demand using clustering and forecasting techniques, including Python scripts for preprocessing, EDA, clustering, predictive modeling, and a Flask web app for interactive visualization. It combines clustering insights with advanced forecasting models for comprehensive analysis."
+        outcomes={[
+          "Identified 3-5 optimal clusters based on weather and time patterns",
+          "Achieved 15-30% improvement in forecasting metrics over baseline",
+          "Best models: XGBoost and ensembles for highest accuracy",
+          "Interactive web app for exploring clusters and forecasts",
+          "Demonstrated importance of feature engineering in energy prediction"
+        ]}
+        techStack={["Python", "Scikit-learn", "PyTorch", "ARIMA", "XGBoost", "Flask", "PCA"]}
+        duration="Project Duration"
+        clientType="Energy Sector Research"
+      />
+    ),
   },
   {
-    category: "E-commerce Platform",
-    title: "Next-Gen E-commerce Platform",
-    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <ProjectDetailContent 
-      description="Complete e-commerce platform redesign focusing on performance, user experience, and conversion optimization with advanced analytics and personalization features. This platform transformed the client's online presence and sales performance."
-      outcomes={[
-        "300% performance improvement in page load times",
-        "45% increase in conversion rates",
-        "Mobile-first responsive design implementation",
-        "75% improvement in user engagement metrics"
-      ]}
-      techStack={["Next.js", "TypeScript", "Stripe", "Vercel", "Prisma", "PostgreSQL", "Redis"]}
-      duration="7 months"
-      clientType="National Retail Chain"
-    />,
+    category: "Data Analysis & Visualization",
+    title: "Mortality Data Analysis System",
+    src: "https://github.com/SharifAthar/Hospital-Mortality-Prediction-SQL/raw/main/Hospital%20Mortality%20Dashboard%20(Tableau).png",
+    content: (
+      <ProjectDetailContent 
+        description="A comprehensive platform for processing, analyzing, validating, visualizing, and forecasting mortality data. Features memory-efficient handling of large datasets, robust cleaning, interactive Streamlit dashboard, and SARIMAX time-series forecasting for public health insights."
+        outcomes={[
+          "Handled large datasets (>100k rows) with chunk-based processing",
+          "Implemented anomaly detection and correction for data integrity",
+          "Created interactive visualization dashboard with filters and maps",
+          "Enabled multi-year mortality projections with adjustable confidence intervals",
+          "Supported state-level analysis and forecasting"
+        ]}
+        techStack={["Python", "Streamlit", "Pandas", "SARIMAX", "Matplotlib", "Seaborn"]}
+        duration="Project Duration"
+        clientType="Public Health Research"
+      />
+    ),
   },
   {
-    category: "Document Processing",
-    title: "Intelligent Document Processing",
-    src: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <ProjectDetailContent 
-      description="AI-powered document processing pipeline that extracts, categorizes, and processes various document types using OCR, NLP, and machine learning technologies. This system automated complex document workflows and eliminated manual data entry."
-      outcomes={[
-        "10,000+ documents processed daily",
-        "95% accuracy rate in data extraction",
-        "80% time savings in document processing",
-        "Compliance automation for regulatory requirements"
-      ]}
-      techStack={["Python", "OCR", "NLP", "AWS Lambda", "ElasticSearch", "MongoDB", "Docker"]}
-      duration="6 months"
-      clientType="Financial Services Company"
-    />,
+    category: "AI & Education",
+    title: "AI-Powered Study Assistant",
+    src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: (
+      <ProjectDetailContent 
+        description="An interactive AI-powered assistant designed to help students with personalized study support, including answering questions, summarizing content."
+        outcomes={[
+          "Provided personalized study recommendations",
+          "Offered real-time question answering",
+          "Generated content summaries for efficient learning",
+          "Improved student engagement and retention",
+          "Adapted to individual learning styles"
+        ]}
+        techStack={["AI", "NLP", "Machine Learning", "Chatbot Framework", "Python"]}
+        duration="Project Duration"
+        clientType="Educational Technology"
+      />
+    ),
+  },
+  {
+    category: "AI & Machine Learning",
+    title: "Medical-CoT: Fine-Tuned LLaMA 3.2 Model",
+    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: (
+      <ProjectDetailContent 
+        description="A fine-tuned LLaMA 3.2 (3B) model using PEFT techniques to enhance performance in complex multi-step reasoning tasks via chain-of-thought prompting, focused on medical applications."
+        outcomes={[
+          "Improved multi-step reasoning in medical queries",
+          "Enhanced performance through PEFT fine-tuning",
+          "Better handling of complex chain-of-thought prompts",
+          "Potential applications in healthcare decision support"
+        ]}
+        techStack={["LLaMA 3.2", "PEFT", "Chain-of-Thought Prompting", "Python", "Transformers"]}
+        duration="3 months"
+        clientType="Research Project"
+      />
+    ),
   },
 ]; 
