@@ -57,11 +57,9 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
   }, [lastScrollY])
 
   const navigationLinks = [
+    { href: '/', label: 'Home', active: currentPath === '/' },
     { href: '/#services', label: 'How it works', active: currentPath === '/' },
     { href: '/#expertise', label: 'Use cases', active: currentPath === '/' },
-    { href: '/pricing', label: 'Pricing', active: currentPath === '/pricing' },
-    { href: '/enterprise', label: 'Enterprise', active: currentPath === '/enterprise' },
-    { href: '/help', label: 'Help', active: currentPath === '/help' },
     { href: '/projects', label: 'Projects', active: currentPath === '/projects' }
   ]
 

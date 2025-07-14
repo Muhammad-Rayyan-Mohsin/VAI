@@ -99,9 +99,9 @@ export const Cover = ({
       <motion.span
         key={String(hovered)}
         animate={{
-          scale: hovered ? 0.8 : 1,
-          x: hovered ? [0, -30, 30, -30, 30, 0] : [0, -0.5, 0.5, -0.5, 0.5, 0],
-          y: hovered ? [0, 30, -30, 30, -30, 0] : [0, 0.5, -0.5, 0.5, -0.5, 0],
+          scale: hovered ? 0.95 : 1,
+          x: hovered ? [0, -2, 2, -1, 1, 0] : [0, -0.5, 0.5, -0.5, 0.5, 0],
+          y: hovered ? [0, -1, 1, -0.5, 0.5, 0] : [0, 0.5, -0.5, 0.5, -0.5, 0],
         }}
         exit={{
           filter: "none",
@@ -110,26 +110,26 @@ export const Cover = ({
           y: 0,
         }}
         transition={{
-          duration: 0.2,
+          duration: 0.3,
           x: {
-            duration: hovered ? 0.2 : 12,
-            repeat: Infinity,
+            duration: hovered ? 1.2 : 12,
+            repeat: hovered ? 0 : Infinity,
             repeatType: "loop",
             ease: "easeInOut",
             repeatDelay: hovered ? 0 : 3,
           },
           y: {
-            duration: hovered ? 0.2 : 12,
-            repeat: Infinity,
+            duration: hovered ? 1.2 : 12,
+            repeat: hovered ? 0 : Infinity,
             repeatType: "loop",
             ease: "easeInOut",
             repeatDelay: hovered ? 0 : 3,
           },
           scale: {
-            duration: 0.2,
+            duration: 0.3,
           },
           filter: {
-            duration: 0.2,
+            duration: 0.3,
           },
         }}
         className={cn(

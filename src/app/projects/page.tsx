@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 import Navigation from '@/components/ui/navigation'
 import StartProjectModal from '@/components/ui/start-project-modal'
 import LampDemo from '@/components/lamp-demo'
-import AppleCardsCarouselDemo from '@/components/apple-cards-carousel-demo'
+import { lazy, Suspense } from 'react'
+const AppleCardsCarouselDemo = lazy(() => import('@/components/apple-cards-carousel-demo'))
 
 export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -32,7 +33,9 @@ export default function Projects() {
 
       {/* Projects Showcase - Carousel */}
       <section className="bg-white">
-        <AppleCardsCarouselDemo />
+        <Suspense fallback={<div>Loading projects...</div>}>
+          <AppleCardsCarouselDemo />
+        </Suspense>
       </section>
 
       {/* Call to Action */}

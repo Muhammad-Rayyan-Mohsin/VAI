@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 
 interface ProjectCardData {
@@ -17,10 +17,15 @@ export default function AppleCardsCarouselDemo() {
 
   return (
     <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-black font-sans mb-8">
+      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-black font-sans mb-4">
         Transforming Ideas Into Impact.
       </h2>
-      <Carousel items={cards} />
+      <p className="max-w-7xl pl-6 mx-auto text-sm md:text-base text-gray-600 mb-8">
+        Click on a project card to view more details
+      </p>
+      <Suspense fallback={<div>Loading carousel...</div>}>
+        <Carousel items={cards} />
+      </Suspense>
     </div>
   );
 }
@@ -95,7 +100,10 @@ const ProjectDetailContent = ({
         </p>
         
         <div className="flex justify-center mt-8">
-          <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
+          <button 
+            className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors"
+            onClick={() => window.open('https://calendly.com/usmanabbas5030', '_blank')}
+          >
             Schedule a Consultation
           </button>
         </div>

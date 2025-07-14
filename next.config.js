@@ -12,6 +12,32 @@ const nextConfig = {
   images: {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000, // 1 year
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'supabase.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'substack-post-media.s3.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.vectorlogo.zone',
+      },
+    ],
   },
   
   // Bundle optimization
@@ -42,6 +68,7 @@ const nextConfig = {
   
   // Experimental features for performance
   experimental: {
+    swcMinify: true,
     optimizePackageImports: ['framer-motion', 'lucide-react', '@tabler/icons-react'],
     turbo: {
       rules: {

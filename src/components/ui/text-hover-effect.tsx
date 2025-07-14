@@ -13,11 +13,11 @@ export const TextHoverEffect = ({
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
-  const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const [maskPosition, setMaskPosition] = useState({ cx: "32%", cy: "50%" }); // Shifted right to center on 'AI'
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
-    if (svgRef.current && cursor.x !== null && cursor.y !== null) {
+    if (hovered && svgRef.current && cursor.x !== null && cursor.y !== null) {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -33,6 +33,8 @@ export const TextHoverEffect = ({
           });
         }
       });
+    } else if (!hovered) {
+      setMaskPosition({ cx: "32%", cy: "50%" }); // Reset to adjusted 'AI' position
     }
     
     return () => {
@@ -40,7 +42,7 @@ export const TextHoverEffect = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [cursor]);
+  }, [cursor, hovered]);
 
   const textStyle = {
     fontFamily: 'Inter, helvetica, sans-serif',
@@ -70,15 +72,11 @@ export const TextHoverEffect = ({
           cy="50%"
           r="25%"
         >
-          {hovered && (
-            <>
-              <stop offset="0%" stopColor="#000000" />
-              <stop offset="25%" stopColor="#000000" />
-              <stop offset="50%" stopColor="#000000" />
-              <stop offset="75%" stopColor="#000000" />
-              <stop offset="100%" stopColor="#000000" />
-            </>
-          )}
+          <stop offset="0%" stopColor="#000000" />
+          <stop offset="25%" stopColor="#000000" />
+          <stop offset="50%" stopColor="#000000" />
+          <stop offset="75%" stopColor="#000000" />
+          <stop offset="100%" stopColor="#000000" />
         </linearGradient>
 
         <motion.radialGradient
@@ -112,7 +110,7 @@ export const TextHoverEffect = ({
         style={{
           ...textStyle,
           stroke: '#d1d5db',
-          opacity: hovered ? 0.7 : 1,
+          opacity: 0.7, // Reduced opacity for subtler background
         }}
       >
         {text}
@@ -151,7 +149,7 @@ export const TextHoverEffect = ({
         style={{
           ...textStyle,
           stroke: 'url(#textGradient)',
-          opacity: hovered ? 1 : 0,
+          opacity: 1,
         }}
         mask="url(#textMask)"
       >

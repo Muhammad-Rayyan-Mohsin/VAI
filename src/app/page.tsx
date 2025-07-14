@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, lazy, Suspense } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -10,10 +11,12 @@ import { Cover } from '@/components/ui/cover'
 import { ContainerTextFlip } from '@/components/ui/container-text-flip'
 import Navigation from '@/components/ui/navigation'
 import StartProjectModal from '@/components/ui/start-project-modal'
+import Image from 'next/image'
 
 // Lazy load heavy components
 const BackgroundBeams = lazy(() => import('@/components/ui/background-beams').then(module => ({ default: module.BackgroundBeams })))
 const BentoGridDemo = lazy(() => import('@/components/bento-grid-demo'))
+const AppleCardsCarouselDemo = lazy(() => import('@/components/apple-cards-carousel-demo'))
 import { 
   Play,
   Users,
@@ -32,10 +35,24 @@ import {
 } from 'lucide-react'
 
 export default function Home() {
+  const router = useRouter()
   const [isVisible, setIsVisible] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [showNav, setShowNav] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const techStack = [
+    { name: 'Next.js', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg' },
+    { name: 'React', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
+    { name: 'Tailwind CSS', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' },
+    { name: 'TypeScript', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg' },
+    { name: 'Supabase', logo: 'https://supabase.com/images/logo-dark.png' },
+    { name: 'Python', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg' },
+    { name: 'TensorFlow', logo: 'https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg' },
+    { name: 'PyTorch', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg' },
+    { name: 'AWS', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+    { name: 'Node.js', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
+  ]
 
   useEffect(() => {
     setIsVisible(true)
@@ -131,7 +148,7 @@ export default function Home() {
             >
               Start Your Project
             </Button>
-            <Button className="btn-brand-outline rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+            <Button className="btn-brand-outline rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto" onClick={() => router.push('/projects')}>
               <Play className="h-4 w-4 sm:h-5 sm:w-5" />
               View Our Work
             </Button>
@@ -329,8 +346,11 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-12 sm:py-16 md:py-20 bg-brand-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 container-mobile">
+      <section id="services" className="py-12 sm:py-16 md:py-20 bg-brand-background relative overflow-hidden">
+        <Suspense fallback={<div className="absolute inset-0 opacity-20" />}>
+          <BackgroundBeams className="opacity-20" />
+        </Suspense>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 container-mobile relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-4 sm:mb-6 px-2 sm:px-0">
               "This feels like having a tech team on steroids."
@@ -380,41 +400,45 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div className="mb-8 md:mb-0">
               <div className="space-y-6 sm:space-y-8">
-                                  {[
+                  {[
                     {
-                      icon: <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-brand-secondary" />,
+                      icon: <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
                       title: "AI Model Development",
                       description: "Custom machine learning models, neural networks, and AI systems tailored to your specific use cases."
                     },
                     {
-                      icon: <Layers className="h-5 w-5 sm:h-6 sm:w-6 text-brand-secondary" />,
+                      icon: <Code className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
                       title: "Full-Stack Development",
                       description: "End-to-end web applications with modern frameworks, cloud deployment, and scalable architecture."
                     },
                     {
-                      icon: <Database className="h-5 w-5 sm:h-6 sm:w-6 text-brand-secondary" />,
+                      icon: <Database className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
                       title: "Data Engineering",
                       description: "Data pipelines, ETL processes, and infrastructure for handling large-scale data operations."
                     }
                   ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-3 sm:gap-4"
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex-shrink-0 p-1.5 sm:p-2 bg-brand-primary/50 rounded-lg">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-brand-background">{item.title}</h3>
-                      <p className="text-sm sm:text-base text-brand-background/70">{item.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start gap-3 sm:gap-4"
+                    >
+                      <div className="flex-shrink-0 mt-1">
+                        {item.icon}
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-brand-background">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-brand-background/70">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
             </div>
 
             <div className="relative mt-8 md:mt-0">
@@ -455,63 +479,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-12 sm:py-16 md:py-20 gradient-bg-secondary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center container-mobile">
+      {/* Technology Stack */}
+      <section className="py-12 sm:py-16 md:py-20 gradient-bg-secondary w-full">
+        <div className="w-full px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-3 sm:mb-4 px-2 sm:px-0">
-            Transforming businesses with AI.
+            Our Technology Stack
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-brand-primary/70 mb-8 sm:mb-12 px-2 sm:px-0">
-            See how our AI and technology solutions are driving real results
+          <p className="text-base sm:text-lg md:text-xl text-brand-primary/70 mb-8 sm:mb-12 px-2 sm:px-0 max-w-4xl mx-auto">
+            Powered by cutting-edge tools and frameworks
           </p>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {[
-              {
-                content: "VAIBRANT built an AI system that reduced our processing time by 80%. Game-changing results.",
-                author: "David Chen",
-                role: "CTO, LogiFlow",
-                rating: 5
-              },
-              {
-                content: "Their data science expertise uncovered insights we never knew existed. ROI was immediate.",
-                author: "Sarah Martinez",
-                role: "VP Analytics, RetailMax",
-                rating: 5
-              },
-              {
-                content: "The web platform they built handles millions of users flawlessly. Exceptional engineering.",
-                author: "Michael Torres",
-                role: "CEO, CloudScale",
-                rating: 5
-              }
-            ].map((testimonial, index) => (
-                              <Card key={index} className="p-4 sm:p-6 card-hover">
-                  <CardContent className="p-0">
-                    <div className="flex mb-3 sm:mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-sm sm:text-base text-brand-primary/70 mb-4 sm:mb-6 italic">"{testimonial.content}"</p>
-                    <div>
-                      <div className="text-sm sm:text-base font-semibold text-brand-primary">{testimonial.author}</div>
-                      <div className="text-xs sm:text-sm text-brand-primary/50">{testimonial.role}</div>
-                    </div>
-                  </CardContent>
-                </Card>
-            ))}
-          </motion.div>
+          <div className="relative overflow-hidden w-full">
+            <motion.div
+              className="flex"
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            >
+              {techStack.concat(techStack).map((tech, index) => (
+                <motion.div
+                  key={`${tech.name}-${index}`}
+                  className="mx-4 flex-shrink-0"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src={tech.logo}
+                    alt={tech.name}
+                    width={100}
+                    height={64}
+                    className="h-16 w-auto object-contain"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
-            {/* CTA Section */}
+      {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 gradient-bg-primary text-brand-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center container-mobile">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 px-2 sm:px-0">
