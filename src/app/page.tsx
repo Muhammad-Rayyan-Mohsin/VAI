@@ -543,15 +543,15 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-brand-primary text-brand-background py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 container-mobile">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+      <footer className="bg-brand-primary text-brand-background py-8 md:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container-mobile">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             <div className="sm:col-span-2 md:col-span-1 mb-6 sm:mb-0">
-              <div className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">VAIBRANT</div>
-              <p className="text-sm sm:text-base text-brand-background/70 mb-4">
+              <div className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">VAIBRANT</div>
+              <p className="text-base md:text-lg text-brand-background/70 mb-4">
                 Expert AI, ML, and technology services that transform businesses and drive innovation.
               </p>
-              <div className="flex space-x-3 sm:space-x-4">
+              <div className="flex space-x-4 md:space-x-6">
                 <div className="w-7 h-7 sm:w-8 sm:h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center">
                   <span className="text-xs">Li</span>
                 </div>
@@ -579,11 +579,11 @@ export default function Home() {
               }
             ].map((column, index) => (
               <div key={index} className="mb-6 sm:mb-0">
-                <h3 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">{column.title}</h3>
-                <ul className="space-y-2">
+                <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">{column.title}</h3>
+                <ul className="space-y-3">
                   {column.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a href="#" className="text-xs sm:text-sm text-brand-background/70 hover:text-brand-background transition-colors">
+                      <a href="#" className="text-sm md:text-base text-brand-background/70 hover:text-brand-background transition-colors">
                         {link}
                       </a>
                     </li>
@@ -593,11 +593,11 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="border-t border-brand-secondary/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-brand-background/70 text-xs sm:text-sm">
+          <div className="border-t border-brand-secondary/30 mt-8 md:mt-12 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-brand-background/70 text-sm md:text-base">
               © 2024 VAIBRANT. All rights reserved.
             </p>
-            <div className="flex space-x-4 sm:space-x-6 text-xs sm:text-sm text-brand-background/70 mt-3 md:mt-0">
+            <div className="flex space-x-6 md:space-x-8 text-sm md:text-base text-brand-background/70 mt-3 md:mt-0">
               <a href="#" className="hover:text-brand-background transition-colors">Privacy</a>
               <a href="#" className="hover:text-brand-background transition-colors">Terms</a>
               <a href="#" className="hover:text-brand-background transition-colors">Cookies</a>

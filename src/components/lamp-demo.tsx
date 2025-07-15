@@ -24,21 +24,6 @@ export default function LampDemo() {
         <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
           Discover the intelligent solutions we've crafted to transform businesses and drive unprecedented growth.
         </p>
-        
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <Button className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3 text-lg flex items-center gap-2">
-            Start Your Project
-            <ArrowRight className="h-5 w-5" />
-          </Button>
-          <Button className="border border-white text-white hover:bg-white hover:text-black bg-transparent rounded-full px-8 py-3 text-lg">
-            View Our Process
-          </Button>
-        </motion.div>
       </motion.div>
     </LampContainer>
   );

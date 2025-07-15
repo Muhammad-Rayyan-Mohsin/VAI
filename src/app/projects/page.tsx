@@ -63,12 +63,6 @@ export default function Projects() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Button>
-              <Button className="bg-white text-black border border-gray-300 hover:bg-gray-50 rounded-full px-8 py-3 text-lg flex items-center gap-2">
-                View Our Process
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </Button>
             </div>
           </motion.div>
         </div>

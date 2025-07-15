@@ -73,18 +73,18 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
         ease: "easeInOut" 
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center space-x-2 z-50 relative">
             <div className="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center">
               <span className="text-brand-background text-sm font-bold">V</span>
             </div>
-            <div className="text-xl font-semibold text-brand-primary">VAIBRANT</div>
+            <div className="text-lg md:text-xl lg:text-2xl font-semibold text-brand-primary">VAIBRANT</div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-primary/70">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-10 text-sm font-medium text-brand-primary/70">
             {navigationLinks.map((link) => (
               <a 
                 key={link.href}
@@ -170,12 +170,12 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               {/* Navigation Links */}
-              <div className="px-6 py-6 space-y-2">
+              <div className="px-4 md:px-6 py-8 space-y-4">
                 {navigationLinks.map((link, index) => (
                   <motion.a
                     key={link.href}
                     href={link.href}
-                    className={`block py-3 px-4 text-lg font-medium rounded-xl transition-colors ${
+                    className={`block py-4 px-4 text-xl font-medium rounded-xl transition-colors ${
                       link.active 
                         ? 'text-brand-primary bg-brand-primary/10' 
                         : 'text-brand-primary/70 hover:text-brand-primary hover:bg-gray-50'
