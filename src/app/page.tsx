@@ -11,6 +11,7 @@ import { Cover } from '@/components/ui/cover'
 import { ContainerTextFlip } from '@/components/ui/container-text-flip'
 import Navigation from '@/components/ui/navigation'
 import StartProjectModal from '@/components/ui/start-project-modal'
+import { EXTERNAL_LINKS } from '@/lib/external-links'
 import Image from 'next/image'
 
 // Lazy load heavy components
@@ -19,19 +20,10 @@ const BentoGridDemo = lazy(() => import('@/components/bento-grid-demo'))
 const AppleCardsCarouselDemo = lazy(() => import('@/components/apple-cards-carousel-demo'))
 import { 
   Play,
-  Users,
-  MessageSquare,
-  BarChart3,
-  Zap,
-  Shield,
-  Globe,
-  Star,
   Brain,
   Code,
   Database,
-  Cpu,
-  TrendingUp,
-  Layers
+  Zap
 } from 'lucide-react'
 
 export default function Home() {
@@ -95,7 +87,16 @@ export default function Home() {
   return (
     <div className="min-h-screen gradient-light-brand">
       {/* Navigation */}
-      <Navigation currentPath="/" showNav={showNav} />
+      <div className="absolute top-0 left-0 right-0 z-[100]">
+        <Navigation 
+          currentPath="/" 
+          showNav={true}
+          actionButton={{
+            text: 'Start Project',
+            onClick: () => setIsModalOpen(true)
+          }}
+        />
+      </div>
 
       {/* Hero Section */}
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 relative overflow-hidden">
@@ -534,7 +535,7 @@ export default function Home() {
             </Button>
             <Button 
               className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
-              onClick={() => window.open('https://calendly.com/usmanabbas5030', '_blank')}
+              onClick={() => window.open(EXTERNAL_LINKS.CALENDLY, '_blank')}
             >
               Schedule Consultation
             </Button>
@@ -543,24 +544,24 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-brand-primary text-brand-background py-8 md:py-12 lg:py-16">
+      <footer className="bg-brand-primary text-brand-background py-6 md:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container-mobile">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <div className="sm:col-span-2 md:col-span-1 mb-6 sm:mb-0">
-              <div className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">VAIBRANT</div>
-              <p className="text-base md:text-lg text-brand-background/70 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="sm:col-span-2 lg:col-span-1 mb-4 sm:mb-0">
+              <div className="text-xl md:text-2xl font-bold mb-2 md:mb-3">VAIBRANT</div>
+              <p className="text-sm md:text-base text-brand-background/70 mb-3 leading-relaxed">
                 Expert AI, ML, and technology services that transform businesses and drive innovation.
               </p>
-              <div className="flex space-x-4 md:space-x-6">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center">
-                  <span className="text-xs">Li</span>
-                </div>
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center">
-                  <span className="text-xs">Gh</span>
-                </div>
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center">
-                  <span className="text-xs">X</span>
-                </div>
+              <div className="flex space-x-3">
+                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="LinkedIn">
+                  <span className="text-xs font-medium">Li</span>
+                </a>
+                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="GitHub">
+                  <span className="text-xs font-medium">Gh</span>
+                </a>
+                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="Twitter">
+                  <span className="text-xs font-medium">X</span>
+                </a>
               </div>
             </div>
             
@@ -570,20 +571,20 @@ export default function Home() {
                 links: ["AI & Machine Learning", "Data Science", "Web Development", "Automation"]
               },
               {
-                title: "Expertise",
+                title: "Expertise", 
                 links: ["Deep Learning", "Analytics", "Cloud Solutions", "Consulting"]
               },
               {
                 title: "Company",
-                links: ["About Us", "Case Studies", "Careers", "Contact"]
+                links: ["About Us", "Case Studies", "Contact"]
               }
             ].map((column, index) => (
-              <div key={index} className="mb-6 sm:mb-0">
-                <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">{column.title}</h3>
-                <ul className="space-y-3">
+              <div key={index} className="mb-4 sm:mb-0">
+                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3">{column.title}</h3>
+                <ul className="space-y-1.5">
                   {column.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a href="#" className="text-sm md:text-base text-brand-background/70 hover:text-brand-background transition-colors">
+                      <a href="#" className="text-xs md:text-sm text-brand-background/70 hover:text-brand-background transition-colors block py-0.5">
                         {link}
                       </a>
                     </li>
@@ -593,11 +594,11 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="border-t border-brand-secondary/30 mt-8 md:mt-12 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-brand-background/70 text-sm md:text-base">
+          <div className="border-t border-brand-secondary/30 mt-6 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+            <p className="text-brand-background/70 text-xs md:text-sm">
               © 2024 VAIBRANT. All rights reserved.
             </p>
-            <div className="flex space-x-6 md:space-x-8 text-sm md:text-base text-brand-background/70 mt-3 md:mt-0">
+            <div className="flex space-x-4 text-xs md:text-sm text-brand-background/70">
               <a href="#" className="hover:text-brand-background transition-colors">Privacy</a>
               <a href="#" className="hover:text-brand-background transition-colors">Terms</a>
               <a href="#" className="hover:text-brand-background transition-colors">Cookies</a>

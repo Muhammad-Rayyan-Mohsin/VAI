@@ -2,6 +2,7 @@
 
 import React, { Suspense } from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { EXTERNAL_LINKS } from "@/lib/external-links";
 
 interface ProjectCardData {
   category: string;
@@ -102,7 +103,7 @@ const ProjectDetailContent = ({
         <div className="flex justify-center mt-8">
           <button 
             className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors"
-            onClick={() => window.open('https://calendly.com/usmanabbas5030', '_blank')}
+            onClick={() => window.open(EXTERNAL_LINKS.CALENDLY, '_blank')}
           >
             Schedule a Consultation
           </button>

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import DOMPurify from 'dompurify'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -216,13 +217,14 @@ export default function StartProjectModal({ isOpen, onClose }: StartProjectModal
       
       const { insertProject } = await import('@/lib/supabase')
       
+      // Sanitize user inputs before database insertion
       await insertProject({
-        full_name: formData.fullName,
-        email: formData.email,
-        selected_service: formData.selectedService,
-        estimated_budget: formData.estimatedBudget,
-        project_timeline: formData.projectTimeline,
-        project_details: formData.projectDetails,
+        full_name: DOMPurify.sanitize(formData.fullName.trim()),
+        email: DOMPurify.sanitize(formData.email.trim().toLowerCase()),
+        selected_service: DOMPurify.sanitize(formData.selectedService),
+        estimated_budget: DOMPurify.sanitize(formData.estimatedBudget),
+        project_timeline: DOMPurify.sanitize(formData.projectTimeline),
+        project_details: DOMPurify.sanitize(formData.projectDetails.trim()),
         file_urls: fileUrls
       })
       
@@ -246,7 +248,7 @@ export default function StartProjectModal({ isOpen, onClose }: StartProjectModal
       }, 2000)
       
     } catch (error) {
-      console.error('Error submitting form:', error)
+      // Log error to monitoring service in production
       setSubmitStatus('error')
       
       if (error instanceof Error) {

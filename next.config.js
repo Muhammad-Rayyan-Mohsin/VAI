@@ -50,18 +50,8 @@ const nextConfig = {
       };
     }
     
-    // Tree shaking optimization for framer-motion
-    config.module.rules.push({
-      test: /\.js$/,
-      include: /node_modules\/framer-motion/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-          plugins: ['babel-plugin-transform-es2015-modules-commonjs']
-        }
-      }
-    });
+    // Removed unnecessary Babel transformation for framer-motion
+    // Next.js 14 handles this optimization automatically
     
     return config;
   },

@@ -6,38 +6,37 @@
 
 @layer base {
   :root {
-    /* VAIBRANT Brand Colors - shadcn Color System */
-    /* Primary: Dark Slate #334155 (215.3 25% 26.7%) */
-    /* Secondary: Darker Slate #1e293b (217.2 32.6% 17.5%) */
-    /* Accent: Pure White #fafafa (0 0% 98%) */
+    /* VAIBRANT Brand Colors - Consolidated System */
+    /* Primary: Darker slate #1e293b (217.2 32.6% 17.5%) */
+    /* Secondary: Medium slate #334155 (215.3 25% 26.7%) */
+    /* Background: Off-white #fafafa (0 0% 98%) */
     
-    --background: 0 0% 98%;
-    --foreground: 217.2 32.6% 17.5%;
-    --card: 0 0% 98%;
-    --card-foreground: 217.2 32.6% 17.5%;
-    --popover: 0 0% 98%;
-    --popover-foreground: 217.2 32.6% 17.5%;
-    --primary: 217.2 32.6% 17.5%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 215.3 25% 26.7%;
-    --secondary-foreground: 0 0% 98%;
+    /* Core brand colors */
+    --brand-primary: 217.2 32.6% 17.5%;
+    --brand-secondary: 215.3 25% 26.7%;
+    --brand-background: 0 0% 98%;
+    
+    /* shadcn/ui system colors (using brand colors) */
+    --background: var(--brand-background);
+    --foreground: var(--brand-primary);
+    --card: var(--brand-background);
+    --card-foreground: var(--brand-primary);
+    --popover: var(--brand-background);
+    --popover-foreground: var(--brand-primary);
+    --primary: var(--brand-primary);
+    --primary-foreground: var(--brand-background);
+    --secondary: var(--brand-secondary);
+    --secondary-foreground: var(--brand-background);
     --muted: 220 14.3% 95.9%;
-    --muted-foreground: 215.3 25% 26.7%;
-    --accent: 215.3 25% 26.7%;
-    --accent-foreground: 0 0% 98%;
+    --muted-foreground: var(--brand-secondary);
+    --accent: var(--brand-secondary);
+    --accent-foreground: var(--brand-background);
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: var(--brand-background);
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 215.3 25% 26.7%;
+    --ring: var(--brand-secondary);
     --radius: 0.5rem;
-    
-    /* Custom Brand Variables - shadcn Colors */
-    --brand-primary: 217.2 32.6% 17.5%;     /* Darker slate for primary elements */
-    --brand-secondary: 215.3 25% 26.7%;     /* Medium slate for secondary elements */
-    --brand-background: 0 0% 98%;            /* Off-white background */
-    --brand-foreground: 217.2 32.6% 17.5%;  /* Dark text */
-    --brand-muted: 215.3 25% 26.7%;         /* Muted elements */
   }
 
   .dark {
