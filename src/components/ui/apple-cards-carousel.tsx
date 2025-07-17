@@ -54,6 +54,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [hasMoved, setHasMoved] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const isMouseDownRef = useRef(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Create tripled items for infinite loop
   const tripliedItems = [...items, ...items, ...items];
@@ -104,15 +105,15 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   // Auto-scroll effect
   useEffect(() => {
-    if (carouselRef.current && autoScrollEnabled) {
+    if (carouselRef.current && autoScrollEnabled && !isHovered) {
       const interval = setInterval(() => {
         if (!isDragging) {
-          carouselRef.current?.scrollBy({ left: 2, behavior: 'auto' });
+          carouselRef.current?.scrollBy({ left: 6, behavior: 'auto' });
         }
-      }, 20);
+      }, 10);
       return () => clearInterval(interval);
     }
-  }, [autoScrollEnabled, isDragging]);
+  }, [autoScrollEnabled, isDragging, isHovered]);
 
   // Cleanup function to reset all drag states
   const resetDragState = () => {
@@ -184,6 +185,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const handleMouseLeave = () => {
     resetDragState();
+    setIsHovered(false);
   };
 
   // Touch drag handlers
@@ -328,6 +330,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
+            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}

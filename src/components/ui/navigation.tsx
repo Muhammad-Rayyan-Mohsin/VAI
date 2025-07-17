@@ -58,7 +58,7 @@ export default function Navigation({ currentPath = '/', showNav = true, actionBu
 
   const navigationLinks = [
     { href: '/', label: 'Home', active: currentPath === '/' },
-    { href: '/#services', label: 'How it works', active: currentPath === '/' },
+    { href: '/services', label: 'Services', active: currentPath === '/services' },
     { href: '/#expertise', label: 'Use cases', active: currentPath === '/' },
     { href: '/projects', label: 'Projects', active: currentPath === '/projects' }
   ]
