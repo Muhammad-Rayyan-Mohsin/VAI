@@ -17,14 +17,21 @@ export default function AppleCardsCarouselDemo() {
   ));
 
   return (
-    <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-black font-sans mb-4">
+    <div className="w-full h-full py-12 sm:py-16 md:py-20">
+      <h2 className="max-w-7xl pl-4 sm:pl-6 mx-auto text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-black font-sans mb-2 sm:mb-4 leading-tight">
         Transforming Ideas Into Impact.
       </h2>
-      <p className="max-w-7xl pl-6 mx-auto text-sm md:text-base text-gray-600 mb-8">
+      <p className="max-w-7xl pl-4 sm:pl-6 mx-auto text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
         Click on a project card to view more details
       </p>
-      <Suspense fallback={<div>Loading carousel...</div>}>
+      <Suspense fallback={
+        <div className="flex items-center justify-center py-20">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black mx-auto mb-4"></div>
+            <p className="text-sm md:text-base text-gray-600">Loading carousel...</p>
+          </div>
+        </div>
+      }>
         <Carousel items={cards} />
       </Suspense>
     </div>
@@ -46,34 +53,34 @@ const ProjectDetailContent = ({
 }) => {
   return (
     <>
-      <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-        <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-xl font-sans max-w-3xl mx-auto mb-8">
+      <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-4 sm:p-6 md:p-8 lg:p-14 rounded-3xl mb-4">
+        <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base md:text-lg lg:text-xl font-sans max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
           <span className="font-bold text-neutral-700 dark:text-neutral-200">
             Project Overview
           </span>{" "}
           {description}
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
           <div>
-            <h4 className="font-bold text-neutral-700 dark:text-neutral-200 mb-4">Key Outcomes</h4>
+            <h4 className="font-bold text-neutral-700 dark:text-neutral-200 mb-3 sm:mb-4 text-sm sm:text-base">Key Outcomes</h4>
             <ul className="space-y-2">
               {outcomes.map((outcome, index) => (
-                <li key={index} className="text-neutral-600 dark:text-neutral-400 flex items-center">
-                  <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                  {outcome}
+                <li key={index} className="text-neutral-600 dark:text-neutral-400 flex items-start text-sm sm:text-base">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span className="leading-relaxed">{outcome}</span>
                 </li>
               ))}
             </ul>
           </div>
           
           <div>
-            <h4 className="font-bold text-neutral-700 dark:text-neutral-200 mb-4">Technology Stack</h4>
+            <h4 className="font-bold text-neutral-700 dark:text-neutral-200 mb-3 sm:mb-4 text-sm sm:text-base">Technology Stack</h4>
             <div className="flex flex-wrap gap-2">
               {techStack.map((tech, index) => (
                 <span 
                   key={index}
-                  className="bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded-full text-sm"
+                  className="bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm"
                 >
                   {tech}
                 </span>
@@ -82,7 +89,7 @@ const ProjectDetailContent = ({
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 text-sm text-neutral-600 dark:text-neutral-400">
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
           <div>
             <span className="font-semibold">Duration:</span> {duration}
           </div>
@@ -92,17 +99,17 @@ const ProjectDetailContent = ({
         </div>
       </div>
 
-      <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-        <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-xl font-sans max-w-3xl mx-auto">
+      <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-4 sm:p-6 md:p-8 lg:p-14 rounded-3xl mb-4">
+        <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base md:text-lg lg:text-xl font-sans max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
           <span className="font-bold text-neutral-700 dark:text-neutral-200">
             Ready to start your project?
           </span>{" "}
           Let's discuss how we can transform your vision into reality with cutting-edge technology solutions that drive measurable business results.
         </p>
         
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center">
           <button 
-            className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors"
+            className="bg-black text-white px-6 sm:px-8 py-3 rounded-full hover:bg-gray-800 transition-colors text-sm sm:text-base w-full sm:w-auto"
             onClick={() => window.open(EXTERNAL_LINKS.CALENDLY, '_blank')}
           >
             Schedule a Consultation
