@@ -232,4 +232,23 @@ const data: ProjectCardData[] = [
       />
     ),
   },
+  {
+    category: "AI & Marketing Optimization",
+    title: "Ad Spend Optimizer API",
+    src: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: (
+      <ProjectDetailContent 
+        description="This API-based system helps marketing teams optimize ad spend using XGBoost-powered forecasts for metrics like CPM, CTR, and Install Rate. It allocates budgets across ad formats (Cards, Banners, Video, Native) based on Installs Per Dollar (IPD), while factoring in day-of-week trends. Configurable constraints and interactive visualizations support data-driven decisions. Built with FastAPI, it delivers real-time insights via RESTful endpoints for efficient campaign optimization."
+        outcomes={[
+          "Optimized budget allocation across ad formats",
+          "Accurate forecasts using XGBoost machine learning",
+          "Real-time insights and interactive visualizations",
+          "Improved ROI through data-driven decisions"
+        ]}
+        techStack={["FastAPI", "XGBoost", "Python", "RESTful API", "Data Visualization"]}
+        duration="Project Duration"
+        clientType="Marketing Technology"
+      />
+    ),
+  },
 ]; 
