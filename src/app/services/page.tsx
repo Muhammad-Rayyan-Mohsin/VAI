@@ -182,9 +182,14 @@ export default function Services() {
   }, [])
 
   return (
-    <div ref={containerRef} className="min-h-screen gradient-light-brand text-black overflow-x-hidden">
+    <div ref={containerRef} className="min-h-screen text-black overflow-x-hidden">
+      {/* Fixed Background - doesn't scroll */}
+      <div className="fixed inset-0 w-full h-full z-0">
+        <ShootingStarsAndStarsBackgroundDemo />
+      </div>
+
       {/* Navigation */}
-      <div className="absolute top-0 left-0 right-0 z-[100]">
+      <div className="fixed top-0 left-0 right-0 z-[100]">
         <Navigation 
           currentPath="/services" 
           showNav={showNav}
@@ -194,11 +199,6 @@ export default function Services() {
           }}
         />
       </div>
-
-      {/* New Shooting Stars Background Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden">
-        <ShootingStarsAndStarsBackgroundDemo />
-      </section>
 
       {/* Fixed Title */}
       <motion.div 
@@ -210,17 +210,17 @@ export default function Services() {
         </h1>
       </motion.div>
 
-      {/* Content Container */}
+      {/* Content Container - this scrolls over the fixed background */}
       <div className="relative z-30 pt-[100vh]">
         {/* Services Cards */}
-        <div className="px-4 md:px-8 lg:px-16 py-20">
+        <div className="px-4 md:px-8 lg:px-16 py-20 bg-gradient-to-b from-transparent via-white/90 to-white">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
 
         {/* Call to Action Section */}
-        <section className="relative py-32 px-4 md:px-8 lg:px-16">
+        <section className="relative py-32 px-4 md:px-8 lg:px-16 bg-white">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -243,8 +243,6 @@ export default function Services() {
             </motion.div>
           </div>
         </section>
-
-
       </div>
 
       {/* Start Project Modal */}
