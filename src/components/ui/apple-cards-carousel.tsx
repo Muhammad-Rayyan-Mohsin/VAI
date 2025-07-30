@@ -103,14 +103,29 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     }
   }, [initialScroll, originalLength, isTransitioning]);
 
-  // Auto-scroll effect
+  // Professional mobile detection
+  const isMobile = () => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 768;
+  };
+
+  const isTablet = () => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth >= 768 && window.innerWidth < 1024;
+  };
+
+  // Enhanced auto-scroll with device-specific optimization
   useEffect(() => {
     if (carouselRef.current && autoScrollEnabled && !isHovered) {
+      const scrollSpeed = isMobile() ? 0.5 : isTablet() ? 0.8 : 1;
       const interval = setInterval(() => {
-        if (!isDragging) {
-          carouselRef.current?.scrollBy({ left: 6, behavior: 'auto' });
+        if (!isDragging && carouselRef.current) {
+          carouselRef.current.scrollBy({ 
+            left: scrollSpeed, 
+            behavior: 'auto' 
+          });
         }
-      }, 10);
+      }, 16); // 60fps for ultra-smooth animation
       return () => clearInterval(interval);
     }
   }, [autoScrollEnabled, isDragging, isHovered]);
@@ -286,13 +301,15 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      const scrollAmount = isMobile() ? 180 : 300;
+      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      const scrollAmount = isMobile() ? 180 : 300;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
@@ -311,32 +328,35 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     }
   };
 
-  const isMobile = () => {
-    return window && window.innerWidth < 768;
-  };
-
   return (
     <CarouselContext.Provider
       value={{ onCardClose: handleCardClose, currentIndex, isDragging, hasMoved }}
     >
-      <div className="relative w-full overflow-hidden">
-                  <div
-            className={cn(
-              "flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 select-none",
-              isTransitioning && "scroll-auto", // Disable smooth scrolling during position jumps
-              isDragging ? "cursor-grabbing" : (isHolding ? "cursor-grabbing" : "cursor-grab")
-            )}
-            ref={carouselRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={handleMouseLeave}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            style={{ userSelect: 'none' }}
-          >
+      <div className="relative w-full overflow-hidden max-w-full">
+        <div
+          className={cn(
+            "flex w-full overflow-x-scroll overscroll-x-auto py-8 sm:py-10 md:py-20 select-none",
+            "[scrollbar-width:none] [-webkit-scrollbar:none] [&::-webkit-scrollbar]:hidden",
+            "scroll-smooth supports-[scroll-behavior:smooth]:scroll-smooth",
+            isTransitioning && "scroll-auto", // Disable smooth scrolling during position jumps
+            isDragging ? "cursor-grabbing" : (isHolding ? "cursor-grabbing" : "cursor-grab"),
+            "touch-pan-x", // Enable horizontal panning on mobile
+          )}
+          ref={carouselRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          style={{ 
+            userSelect: 'none',
+            WebkitOverflowScrolling: 'touch', // iOS momentum scrolling
+            touchAction: 'pan-x pinch-zoom', // Optimize touch interactions
+          }}
+        >
           <div
             className={cn(
               "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
@@ -345,8 +365,8 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "mx-auto max-w-7xl",
+              "flex flex-row justify-start gap-4 pl-4 pr-4",
+              "max-w-full",
             )}
           >
             {tripliedItems.map((item, index) => (
@@ -373,18 +393,49 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </div>
         </div>
-        <div className="mr-10 flex justify-end gap-2">
+        {/* Professional Mobile-First Navigation */}
+        <div className="flex justify-center sm:justify-end items-center gap-4 px-4 sm:mr-6 md:mr-10 mt-6 sm:mt-4 mb-6 sm:mb-4">
           <button
-            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100"
+            className={cn(
+              "carousel-nav-btn relative z-40 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl",
+              "!h-12 !w-12 sm:!h-11 sm:!w-11 md:!h-10 md:!w-10 !p-0", // Override global styles with !important
+              "touch-manipulation", // Optimize for touch
+              "focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2",
+              "border border-gray-300" // Add border for definition
+            )}
             onClick={scrollLeft}
+            aria-label="Previous projects"
+            style={{ minHeight: 'auto', minWidth: 'auto', padding: '0' }} // Inline override
           >
-            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+            <svg 
+              className="h-5 w-5 sm:h-4 sm:w-4 text-white pointer-events-none" 
+              fill="currentColor" 
+              viewBox="0 0 24 24"
+              stroke="none"
+            >
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
           </button>
           <button
-            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100"
+            className={cn(
+              "carousel-nav-btn relative z-40 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl",
+              "!h-12 !w-12 sm:!h-11 sm:!w-11 md:!h-10 md:!w-10 !p-0", // Override global styles with !important
+              "touch-manipulation", // Optimize for touch
+              "focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2",
+              "border border-gray-300" // Add border for definition
+            )}
             onClick={scrollRight}
+            aria-label="Next projects"
+            style={{ minHeight: 'auto', minWidth: 'auto', padding: '0' }} // Inline override
           >
-            <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+            <svg 
+              className="h-5 w-5 sm:h-4 sm:w-4 text-white pointer-events-none" 
+              fill="currentColor" 
+              viewBox="0 0 24 24"
+              stroke="none"
+            >
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
           </button>
         </div>
       </div>
@@ -481,19 +532,26 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="relative z-10 flex h-60 w-40 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[30rem] md:w-72 dark:bg-neutral-900"
+        className={cn(
+          "relative z-10 flex flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900",
+          "h-64 w-44 sm:h-72 sm:w-48 md:h-[30rem] md:w-72", // Progressive sizing
+          "touch-manipulation", // Better touch response
+          "transition-all duration-300 ease-out", // Smooth interactions
+          "hover:scale-[1.02] active:scale-[0.98]", // Subtle feedback
+          "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        )}
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-        <div className="relative z-40 p-8">
+        <div className="relative z-40 p-6 sm:p-8 md:p-8">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-left font-sans text-sm font-medium text-white md:text-base"
+            className="text-left font-sans text-xs sm:text-sm md:text-base font-medium text-white/90"
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="mt-2 max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl"
+            className="mt-2 max-w-xs text-left font-sans text-lg sm:text-xl md:text-3xl font-semibold [text-wrap:balance] text-white leading-tight"
           >
             {card.title}
           </motion.p>

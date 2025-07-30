@@ -13,7 +13,7 @@ export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden mobile-container mobile-viewport-optimized">
       {/* Navigation */}
       <div className="absolute top-0 left-0 right-0 z-[100]">
         <Navigation 
@@ -26,23 +26,27 @@ export default function Projects() {
         />
       </div>
 
-      {/* Hero Section with Lamp */}
-      <section className="relative overflow-visible">
-        <LampDemo />
+      {/* Hero Section with Lamp - Professional Mobile Optimized */}
+      <section className="relative w-full overflow-hidden mobile-smooth-transform">
+        <div className="w-full max-w-none">
+          <LampDemo />
+        </div>
       </section>
 
-      {/* Projects Showcase - Carousel */}
-      <section className="bg-white">
-        <Suspense fallback={
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black mx-auto mb-4"></div>
-              <p className="text-sm md:text-base text-gray-600">Loading projects...</p>
+      {/* Projects Showcase - Professional Mobile Layout */}
+      <section className="bg-white w-full overflow-x-hidden relative mobile-smooth-transform">
+        <div className="w-full max-w-none px-2 sm:px-4">
+          <Suspense fallback={
+            <div className="flex items-center justify-center py-16 sm:py-20">
+              <div className="text-center mobile-smooth-transform">
+                <div className="animate-spin rounded-full h-10 w-10 sm:h-8 sm:w-8 border-b-2 border-black mx-auto mb-4"></div>
+                <p className="text-sm md:text-base text-gray-600">Loading projects...</p>
+              </div>
             </div>
-          </div>
-        }>
-          <AppleCardsCarouselDemo />
-        </Suspense>
+          }>
+            <AppleCardsCarouselDemo />
+          </Suspense>
+        </div>
       </section>
 
       {/* Call to Action */}
@@ -63,7 +67,7 @@ export default function Projects() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-black text-white hover:bg-gray-800 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="bg-black text-white hover:bg-gray-800 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto mobile-touch-target mobile-smooth-transform"
               >
                 Get Started Today
                 <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

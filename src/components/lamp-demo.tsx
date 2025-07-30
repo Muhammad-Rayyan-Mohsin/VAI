@@ -16,14 +16,14 @@ export default function LampDemo() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="mt-8 sm:mt-12 md:mt-16 text-center px-4 sm:px-6"
+        className="mt-2 sm:mt-8 md:mt-12 text-center px-4 sm:px-6 max-w-4xl mx-auto"
       >
-        <h1 className="bg-gradient-to-br from-white to-gray-300 py-2 sm:py-4 bg-clip-text text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight text-transparent mb-4 sm:mb-6 md:mb-8 leading-tight">
+        <h1 className="bg-gradient-to-br from-white to-gray-300 py-2 sm:py-4 bg-clip-text text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-medium tracking-tight text-transparent mb-2 sm:mb-4 md:mb-6 lg:mb-8 leading-tight">
           Illuminating <br className="block sm:hidden" />
           <span className="hidden sm:inline"><br /></span>
           Innovation
         </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-3 sm:mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
           Discover the intelligent solutions we've crafted to transform businesses and drive unprecedented growth.
         </p>
       </motion.div>

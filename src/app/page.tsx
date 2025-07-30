@@ -106,12 +106,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto text-center relative z-10 container-mobile">
           {/* Interactive Text Hover Effect */}
           <motion.div
-            className="mb-6 sm:mb-8"
+            className="mb-4 sm:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="scale-150 sm:scale-100 h-20 sm:h-auto overflow-visible">
+            <div className="scale-125 sm:scale-100 h-16 sm:h-auto overflow-visible">
               <TextHoverEffect text="VAIBRANT" />
             </div>
           </motion.div>
@@ -138,18 +138,18 @@ export default function Home() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4 sm:px-0"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-16 px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="btn-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto"
+              className="btn-brand-primary rounded-full px-6 sm:px-8 py-3 sm:py-3 text-base sm:text-lg min-h-[48px] w-full sm:w-auto font-medium"
             >
               Start Your Project
             </Button>
-            <Button className="btn-brand-outline rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto" onClick={() => router.push('/projects')}>
+            <Button className="btn-brand-outline rounded-full px-6 sm:px-8 py-3 sm:py-3 text-base sm:text-lg min-h-[48px] flex items-center justify-center gap-2 w-full sm:w-auto font-medium" onClick={() => router.push('/projects')}>
               <Play className="h-4 w-4 sm:h-5 sm:w-5" />
               View Our Work
             </Button>
@@ -162,10 +162,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           >
-            <GlassCard className="p-4 sm:p-6 md:p-8 bg-white/60 backdrop-blur-sm border border-white/20">
-              <div className="bg-gray-100 rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6">
+            <GlassCard className="p-3 sm:p-6 md:p-8 bg-white/60 backdrop-blur-sm border border-white/20">
+              <div className="bg-gray-100 rounded-lg p-3 sm:p-4 md:p-6 mb-3 sm:mb-6">
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-1.5 sm:space-x-2">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full"></div>
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full"></div>
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full"></div>
@@ -174,7 +174,7 @@ export default function Home() {
                 </div>
                 
                 {/* Insights to Decisions SVG */}
-                <div className="relative h-24 sm:h-32 md:h-36">
+                <div className="relative h-20 sm:h-32 md:h-36">
                   <svg className="w-full h-full" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="insightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -317,25 +317,25 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-center text-brand-primary/70">
-                <p className="text-sm sm:text-base md:text-lg font-medium mb-2 text-brand-primary">Our AI models deliver insights that drive decisions.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-4 sm:mt-6">
-                  <div className="text-left space-y-2">
-                    <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Brain className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                <p className="text-sm sm:text-base md:text-lg font-medium mb-3 text-brand-primary">Our AI models deliver insights that drive decisions.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
+                  <div className="text-left space-y-2.5">
+                    <div className="flex items-center gap-2.5 text-sm sm:text-sm">
+                      <Brain className="h-4 w-4 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
                       <span>AI & Machine Learning</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Database className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                    <div className="flex items-center gap-2.5 text-sm sm:text-sm">
+                      <Database className="h-4 w-4 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
                       <span>Data Science & Analytics</span>
                     </div>
                   </div>
-                  <div className="text-left space-y-2">
-                    <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Code className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                  <div className="text-left space-y-2.5">
+                    <div className="flex items-center gap-2.5 text-sm sm:text-sm">
+                      <Code className="h-4 w-4 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
                       <span>Web Development</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Zap className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                    <div className="flex items-center gap-2.5 text-sm sm:text-sm">
+                      <Zap className="h-4 w-4 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
                       <span>Process Automation</span>
                     </div>
                   </div>
@@ -352,7 +352,7 @@ export default function Home() {
           <BackgroundBeams className="opacity-20" />
         </Suspense>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 container-mobile relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-4 sm:mb-6 px-2 sm:px-0">
               "This feels like having a tech team on steroids."
             </h2>
@@ -389,7 +389,7 @@ export default function Home() {
       {/* Expertise Section */}
       <section id="expertise" className="py-12 sm:py-16 md:py-20 dark-section text-brand-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 container-mobile">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2 sm:px-0">
               Expertise that scales.
             </h2>
@@ -430,7 +430,7 @@ export default function Home() {
                         {item.icon}
                       </div>
                       <div className="text-left">
-                        <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-brand-background">
+                        <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-2 text-brand-background">
                           {item.title}
                         </h3>
                         <p className="text-sm sm:text-base text-brand-background/70">
@@ -444,10 +444,10 @@ export default function Home() {
 
             <div className="relative mt-8 md:mt-0">
               <GlassCard className="p-4 sm:p-6 bg-brand-primary/30 backdrop-blur-sm border border-brand-secondary/30">
-                <div className="bg-brand-primary/70 rounded-lg p-4 mb-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                <div className="bg-brand-primary/70 rounded-lg p-4 sm:p-4 mb-4 sm:mb-4">
+                  <div className="flex items-center justify-between mb-3 sm:mb-3">
+                    <div className="flex space-x-1.5 sm:space-x-2">
+                      <div className="w-2 h-2 sm:w-2 sm:h-2 bg-red-400 rounded-full"></div>
                       <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                     </div>
@@ -499,16 +499,16 @@ export default function Home() {
               {techStack.concat(techStack).map((tech, index) => (
                 <motion.div
                   key={`${tech.name}-${index}`}
-                  className="mx-4 flex-shrink-0"
+                  className="mx-2 sm:mx-4 flex-shrink-0"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
                   <Image
                     src={tech.logo}
                     alt={tech.name}
-                    width={100}
-                    height={64}
-                    className="h-16 w-auto object-contain"
+                    width={80}
+                    height={48}
+                    className="h-12 sm:h-16 w-auto object-contain"
                   />
                 </motion.div>
               ))}
@@ -529,12 +529,12 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto"
+              className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-6 sm:px-8 py-3 sm:py-3 text-base sm:text-lg font-semibold w-full sm:w-auto min-h-[48px]"
             >
               Start Your Project
             </Button>
             <Button 
-              className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
+              className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-6 sm:px-8 py-3 sm:py-3 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto min-h-[48px]"
               onClick={() => window.open(EXTERNAL_LINKS.CALENDLY, '_blank')}
             >
               Schedule Consultation
@@ -544,23 +544,23 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-brand-primary text-brand-background py-6 md:py-8">
+      <footer className="bg-brand-primary text-brand-background py-8 md:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container-mobile">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="sm:col-span-2 lg:col-span-1 mb-4 sm:mb-0">
-              <div className="text-xl md:text-2xl font-bold mb-2 md:mb-3">VAIBRANT</div>
-              <p className="text-sm md:text-base text-brand-background/70 mb-3 leading-relaxed">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
+            <div className="sm:col-span-2 lg:col-span-1 mb-6 sm:mb-0">
+              <div className="text-xl md:text-2xl font-bold mb-3 md:mb-3">VAIBRANT</div>
+              <p className="text-sm md:text-base text-brand-background/70 mb-4 leading-relaxed">
                 Expert AI, ML, and technology services that transform businesses and drive innovation.
               </p>
               <div className="flex space-x-3">
-                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="LinkedIn">
-                  <span className="text-xs font-medium">Li</span>
+                <a href="#" className="w-8 h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="LinkedIn">
+                  <span className="text-sm font-medium">Li</span>
                 </a>
-                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="GitHub">
-                  <span className="text-xs font-medium">Gh</span>
+                <a href="#" className="w-8 h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="GitHub">
+                  <span className="text-sm font-medium">Gh</span>
                 </a>
-                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="Twitter">
-                  <span className="text-xs font-medium">X</span>
+                <a href="#" className="w-8 h-8 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="Twitter">
+                  <span className="text-sm font-medium">X</span>
                 </a>
               </div>
             </div>
@@ -579,12 +579,12 @@ export default function Home() {
                 links: ["About Us", "Case Studies", "Contact"]
               }
             ].map((column, index) => (
-              <div key={index} className="mb-4 sm:mb-0">
-                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3">{column.title}</h3>
-                <ul className="space-y-1.5">
+              <div key={index} className="mb-6 sm:mb-0">
+                <h3 className="text-base md:text-base font-semibold mb-3 md:mb-3">{column.title}</h3>
+                <ul className="space-y-2">
                   {column.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a href="#" className="text-xs md:text-sm text-brand-background/70 hover:text-brand-background transition-colors block py-0.5">
+                      <a href="#" className="text-sm md:text-sm text-brand-background/70 hover:text-brand-background transition-colors block py-1">
                         {link}
                       </a>
                     </li>
@@ -594,11 +594,11 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="border-t border-brand-secondary/30 mt-6 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-            <p className="text-brand-background/70 text-xs md:text-sm">
+          <div className="border-t border-brand-secondary/30 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
+            <p className="text-brand-background/70 text-sm md:text-sm">
               © 2024 VAIBRANT. All rights reserved.
             </p>
-            <div className="flex space-x-4 text-xs md:text-sm text-brand-background/70">
+            <div className="flex space-x-6 text-sm md:text-sm text-brand-background/70">
               <a href="#" className="hover:text-brand-background transition-colors">Privacy</a>
               <a href="#" className="hover:text-brand-background transition-colors">Terms</a>
               <a href="#" className="hover:text-brand-background transition-colors">Cookies</a>

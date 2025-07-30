@@ -13,7 +13,9 @@ export const LampContainer = ({
   return (
     <div
       className={cn(
-        "relative flex h-screen flex-col items-center justify-center bg-black w-full z-0 overflow-visible min-h-[80vh] sm:min-h-[90vh]",
+        "relative flex flex-col items-center justify-center bg-black w-full z-0 overflow-visible",
+        "h-[70vh] min-h-[70vh] sm:min-h-[75vh] md:min-h-screen",
+        "max-h-[70vh] sm:max-h-none", // Prevent mobile overflow
         className
       )}
     >
@@ -90,7 +92,7 @@ export const LampContainer = ({
         <div className="absolute inset-auto z-40 h-32 sm:h-38 md:h-44 w-full top-0 bg-black"></div>
       </div>
 
-      <div className="relative z-50 flex flex-col items-center px-4 sm:px-5 mt-auto mb-16 sm:mb-24 md:mb-32">
+      <div className="relative z-50 flex flex-col items-center px-4 sm:px-5 mt-auto mb-2 sm:mb-8 md:mb-16 lg:mb-24">
         {children}
       </div>
     </div>
