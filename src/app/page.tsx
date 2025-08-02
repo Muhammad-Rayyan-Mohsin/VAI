@@ -3,9 +3,12 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Play, Brain, Code, Database, Zap } from 'lucide-react'
+import { ButtonBase } from '@/components/ui/button-base'
+import { Card } from '@/components/ui/card'
 import GlassCard from '@/components/ui/glass-card'
+import { Button } from '@/components/ui/button'
+import { Typography } from '@/components/ui/typography'
 import { TextHoverEffect } from '@/components/ui/text-hover-effect'
 import { Cover } from '@/components/ui/cover'
 import { ContainerTextFlip } from '@/components/ui/container-text-flip'
@@ -13,18 +16,12 @@ import Navigation from '@/components/ui/navigation'
 import StartProjectModal from '@/components/ui/start-project-modal'
 import { EXTERNAL_LINKS } from '@/lib/external-links'
 import Image from 'next/image'
+import Footer from '@/components/ui/footer'
 
 // Lazy load heavy components
 const BackgroundBeams = lazy(() => import('@/components/ui/background-beams').then(module => ({ default: module.BackgroundBeams })))
 const BentoGridDemo = lazy(() => import('@/components/bento-grid-demo'))
 const AppleCardsCarouselDemo = lazy(() => import('@/components/apple-cards-carousel-demo'))
-import { 
-  Play,
-  Brain,
-  Code,
-  Database,
-  Zap
-} from 'lucide-react'
 
 export default function Home() {
   const router = useRouter()
@@ -116,43 +113,59 @@ export default function Home() {
             </div>
           </motion.div>
           
-          <motion.h1 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-primary mb-4 sm:mb-6 leading-tight px-2 sm:px-0"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           >
-            <Cover>AI-Powered</Cover> Solutions.
-            <br />
-            <span className="text-brand-secondary">Built for Tomorrow.</span>
-          </motion.h1>
+            <Typography 
+              variant="h1" 
+              as="div"
+              className="text-brand-primary mb-3 sm:mb-5 px-2 sm:px-0"
+            >
+              <Cover>AI-Powered</Cover> Solutions.
+              <br />
+              <span className="text-brand-secondary">Built for Tomorrow.</span>
+            </Typography>
+          </motion.div>
           
-          <motion.p 
-            className="text-base sm:text-lg md:text-xl text-brand-primary/70 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            Expert services in AI, Machine Learning, Data Science, and Web Development. 
-            We transform your ideas into intelligent, automated solutions that drive real business value.
-          </motion.p>
+            <Typography 
+              variant="body-lg"
+              className="text-brand-primary/70 mb-4 sm:mb-6 max-w-2xl mx-auto px-2 sm:px-0"
+            >
+              Expert services in AI, Machine Learning, Data Science, and Web Development. 
+              We transform your ideas into intelligent, automated solutions that drive real business value.
+            </Typography>
+          </motion.div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4 sm:px-0"
+            className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mb-8 sm:mb-12 px-2 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
-            <Button 
+            <ButtonBase
+              variant="primary"
+              size="md"
+              className="w-full sm:w-auto"
               onClick={() => setIsModalOpen(true)}
-              className="btn-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto"
             >
               Start Your Project
-            </Button>
-            <Button className="btn-brand-outline rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto" onClick={() => router.push('/projects')}>
-              <Play className="h-4 w-4 sm:h-5 sm:w-5" />
+            </ButtonBase>
+            <ButtonBase
+              variant="outline"
+              size="md"
+              className="w-full sm:w-auto flex items-center gap-2"
+              onClick={() => router.push('/projects')}
+            >
+              <Play className="h-5 w-5" />
               View Our Work
-            </Button>
+            </ButtonBase>
           </motion.div>
 
           {/* Hero Dashboard Preview */}
@@ -162,8 +175,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           >
-            <GlassCard className="p-4 sm:p-6 md:p-8 bg-white/60 backdrop-blur-sm border border-white/20">
-              <div className="bg-gray-100 rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6">
+            <Card className="glass-card-lg">
+              <div className="bg-gray-100 rounded-lg p-2 sm:p-4 md:p-6 mb-3 sm:mb-5">
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <div className="flex space-x-2">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full"></div>
@@ -317,31 +330,31 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-center text-brand-primary/70">
-                <p className="text-sm sm:text-base md:text-lg font-medium mb-2 text-brand-primary">Our AI models deliver insights that drive decisions.</p>
+                <p className="text-xs sm:text-base md:text-lg font-medium mb-1 text-brand-primary">Our AI models deliver insights that drive decisions.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-4 sm:mt-6">
-                  <div className="text-left space-y-2">
+                  <div className="text-left space-y-1.5">
                     <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Brain className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                      <Brain className="h-4 w-4 sm:h-5 sm:w-5 icon-brand-secondary flex-shrink-0" />
                       <span>AI & Machine Learning</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Database className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                      <Database className="h-4 w-4 sm:h-5 sm:w-5 icon-brand-secondary flex-shrink-0" />
                       <span>Data Science & Analytics</span>
                     </div>
                   </div>
                   <div className="text-left space-y-2">
                     <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Code className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                      <Code className="h-4 w-4 sm:h-5 sm:w-5 icon-brand-secondary flex-shrink-0" />
                       <span>Web Development</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm">
-                      <Zap className="h-3 w-3 sm:h-4 sm:w-4 icon-brand-secondary flex-shrink-0" />
+                      <Zap className="h-4 w-4 sm:h-5 sm:w-5 icon-brand-secondary flex-shrink-0" />
                       <span>Process Automation</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </Card>
           </motion.div>
         </div>
       </section>
@@ -351,13 +364,13 @@ export default function Home() {
         <Suspense fallback={<div className="absolute inset-0 opacity-20" />}>
           <BackgroundBeams className="opacity-20" />
         </Suspense>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 container-mobile relative z-10">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 container-mobile relative z-10">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-4 sm:mb-6 px-2 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-3 sm:mb-5 px-2 sm:px-0">
               "This feels like having a tech team on steroids."
             </h2>
             <div className="flex flex-col items-center mb-4 sm:mb-6">
-              <p className="text-base sm:text-lg md:text-xl text-brand-primary/70 mb-3 sm:mb-4">We make your business</p>
+              <p className="text-base sm:text-lg md:text-xl text-brand-primary/70 mb-2 sm:mb-3">We make your business</p>
               <div className="scale-75 sm:scale-90 md:scale-100">
                 <ContainerTextFlip
                   words={["smarter", "faster", "automated", "intelligent", "scalable"]}
@@ -482,7 +495,7 @@ export default function Home() {
 
       {/* Technology Stack */}
       <section className="py-12 sm:py-16 md:py-20 gradient-bg-secondary w-full">
-        <div className="w-full px-4 sm:px-6 text-center">
+        <div className="w-full px-3 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-3 sm:mb-4 px-2 sm:px-0">
             Our Technology Stack
           </h2>
@@ -519,7 +532,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 gradient-bg-primary text-brand-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center container-mobile">
+        <div className="max-w-4xl mx-auto px-3 sm:px-6 text-center container-mobile">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 px-2 sm:px-0">
             Ready to accelerate with AI?
           </h2>
@@ -529,12 +542,12 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto"
+              className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-5 sm:px-7 py-2.5 text-base sm:text-lg font-semibold w-full sm:w-auto min-h-[44px]"
             >
               Start Your Project
             </Button>
             <Button 
-              className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
+              className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-5 sm:px-7 py-2.5 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto min-h-[44px]"
               onClick={() => window.open(EXTERNAL_LINKS.CALENDLY, '_blank')}
             >
               Schedule Consultation
@@ -544,68 +557,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-brand-primary text-brand-background py-6 md:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container-mobile">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="sm:col-span-2 lg:col-span-1 mb-4 sm:mb-0">
-              <div className="text-xl md:text-2xl font-bold mb-2 md:mb-3">VAIBRANT</div>
-              <p className="text-sm md:text-base text-brand-background/70 mb-3 leading-relaxed">
-                Expert AI, ML, and technology services that transform businesses and drive innovation.
-              </p>
-              <div className="flex space-x-3">
-                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="LinkedIn">
-                  <span className="text-xs font-medium">Li</span>
-                </a>
-                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="GitHub">
-                  <span className="text-xs font-medium">Gh</span>
-                </a>
-                <a href="#" className="w-6 h-6 bg-brand-secondary/20 rounded-lg flex items-center justify-center hover:bg-brand-secondary/30 transition-colors" aria-label="Twitter">
-                  <span className="text-xs font-medium">X</span>
-                </a>
-              </div>
-            </div>
-            
-            {[
-              {
-                title: "Services",
-                links: ["AI & Machine Learning", "Data Science", "Web Development", "Automation"]
-              },
-              {
-                title: "Expertise", 
-                links: ["Deep Learning", "Analytics", "Cloud Solutions", "Consulting"]
-              },
-              {
-                title: "Company",
-                links: ["About Us", "Case Studies", "Contact"]
-              }
-            ].map((column, index) => (
-              <div key={index} className="mb-4 sm:mb-0">
-                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3">{column.title}</h3>
-                <ul className="space-y-1.5">
-                  {column.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <a href="#" className="text-xs md:text-sm text-brand-background/70 hover:text-brand-background transition-colors block py-0.5">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          
-          <div className="border-t border-brand-secondary/30 mt-6 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-            <p className="text-brand-background/70 text-xs md:text-sm">
-              © 2024 VAIBRANT. All rights reserved.
-            </p>
-            <div className="flex space-x-4 text-xs md:text-sm text-brand-background/70">
-              <a href="#" className="hover:text-brand-background transition-colors">Privacy</a>
-              <a href="#" className="hover:text-brand-background transition-colors">Terms</a>
-              <a href="#" className="hover:text-brand-background transition-colors">Cookies</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Start Project Modal */}
       <StartProjectModal 

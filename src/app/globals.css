@@ -6,15 +6,34 @@
 
 @layer base {
   :root {
-    /* VAIBRANT Brand Colors - Consolidated System */
-    /* Primary: Darker slate #1e293b (217.2 32.6% 17.5%) */
-    /* Secondary: Medium slate #334155 (215.3 25% 26.7%) */
-    /* Background: Off-white #fafafa (0 0% 98%) */
+    /* Design tokens */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Typography scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
     
     /* Core brand colors */
     --brand-primary: 217.2 32.6% 17.5%;
     --brand-secondary: 215.3 25% 26.7%;
     --brand-background: 0 0% 98%;
+    
+    /* Opacity scale */
+    --opacity-10: 0.1;
+    --opacity-20: 0.2;
+    --opacity-40: 0.4;
+    --opacity-60: 0.6;
+    --opacity-80: 0.8;
     
     /* shadcn/ui system colors (using brand colors) */
     --background: var(--brand-background);
