@@ -79,7 +79,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
     try {
       // Use Web3Forms service to send email
       const submitData = new FormData()
-      submitData.append('access_key', 'e734d937-ff4d-4a47-a14b-031b9bcaa3e7') // Web3Forms access key for aivaibrant@gmail.com
+              submitData.append('access_key', 'e734d937-ff4d-4a47-a14b-031b9bcaa3e7') // Web3Forms access key for info@vaibrant.co
       submitData.append('name', formData.name)
       submitData.append('email', formData.email)
       submitData.append('message', formData.message)

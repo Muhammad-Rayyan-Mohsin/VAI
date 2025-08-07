@@ -47,7 +47,7 @@ export default function Footer({ className = '' }: FooterProps) {
   ]
 
   const contactInfo = [
-    { icon: Mail, text: 'hello@vaibrant.io', href: 'mailto:hello@vaibrant.io' },
+    { icon: Mail, text: 'info@vaibrant.co', href: 'mailto:info@vaibrant.co' },
     { icon: Phone, text: '+1 (555) 123-4567', href: 'tel:+15551234567' },
     { icon: MapPin, text: 'San Francisco, CA', href: '#' }
   ]
