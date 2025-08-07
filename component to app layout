@@ -1,0 +1,19 @@
+[1mdiff --git a/src/app/layout.tsx b/src/app/layout.tsx[m
+[1mindex c38dad2..c4c06fc 100644[m
+[1m--- a/src/app/layout.tsx[m
+[1m+++ b/src/app/layout.tsx[m
+[36m@@ -1,5 +1,6 @@[m
+ import type { Metadata, Viewport } from 'next'[m
+ import { Inter } from 'next/font/google'[m
+[32m+[m[32mimport { Analytics } from '@vercel/analytics/next'[m
+ import './globals.css'[m
+ [m
+ const inter = Inter({ subsets: ['latin'] })[m
+[36m@@ -169,6 +170,7 @@[m [mexport default function RootLayout({[m
+       </head>[m
+       <body className={inter.className}>[m
+         {children}[m
+[32m+[m[32m        <Analytics />[m
+       </body>[m
+     </html>[m
+   )[m
