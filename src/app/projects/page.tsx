@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Navigation from '@/components/ui/navigation'
-import StartProjectModal from '@/components/ui/start-project-modal'
+import ContactFormModal from '@/components/ui/contact-form-modal'
 import LampDemo from '@/components/lamp-demo'
 import { lazy, Suspense } from 'react'
 const AppleCardsCarouselDemo = lazy(() => import('@/components/apple-cards-carousel-demo'))
 
 export default function Projects() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-white">
@@ -20,8 +20,8 @@ export default function Projects() {
           currentPath="/projects" 
           showNav={true}
           actionButton={{
-            text: 'Start Project',
-            onClick: () => setIsModalOpen(true)
+            text: 'Contact Us',
+            onClick: () => setIsContactModalOpen(true)
           }}
         />
       </div>
@@ -62,10 +62,10 @@ export default function Projects() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsContactModalOpen(true)}
                 className="bg-black text-white hover:bg-gray-800 rounded-full px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                Get Started Today
+                Contact Us
                 <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -75,10 +75,10 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Start Project Modal */}
-      <StartProjectModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      {/* Contact Form Modal */}
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
       />
     </div>
   )

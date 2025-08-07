@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import Navigation from '@/components/ui/navigation'
-import StartProjectModal from '@/components/ui/start-project-modal'
+import ContactFormModal from '@/components/ui/contact-form-modal'
 import { Brain, Database, BarChart3, Zap, Bot, Code, TrendingUp, Shield } from 'lucide-react'
 import ShootingStarsAndStarsBackgroundDemo from '@/components/ui/shooting-stars-and-stars-background-demo'
 
@@ -158,7 +158,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 }
 
 export default function Services() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [showNav, setShowNav] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
   
@@ -194,8 +194,8 @@ export default function Services() {
           currentPath="/services" 
           showNav={showNav}
           actionButton={{
-            text: 'Start Project',
-            onClick: () => setIsModalOpen(true)
+            text: 'Contact Us',
+            onClick: () => setIsContactModalOpen(true)
           }}
         />
       </div>
@@ -235,20 +235,20 @@ export default function Services() {
                 Let's discuss how our AI-powered solutions can drive innovation and growth for your organization.
               </p>
               <button 
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsContactModalOpen(true)}
                 className="bg-black text-white hover:bg-gray-800 rounded-full px-12 py-4 text-lg font-medium transition-colors shadow-2xl"
               >
-                Get Started Today
+                Contact Us
               </button>
             </motion.div>
           </div>
         </section>
       </div>
 
-      {/* Start Project Modal */}
-      <StartProjectModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      {/* Contact Form Modal */}
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
       />
     </div>
   )

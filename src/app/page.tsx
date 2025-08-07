@@ -13,7 +13,7 @@ import { TextHoverEffect } from '@/components/ui/text-hover-effect'
 import { Cover } from '@/components/ui/cover'
 import { ContainerTextFlip } from '@/components/ui/container-text-flip'
 import Navigation from '@/components/ui/navigation'
-import StartProjectModal from '@/components/ui/start-project-modal'
+import ContactFormModal from '@/components/ui/contact-form-modal'
 import { EXTERNAL_LINKS } from '@/lib/external-links'
 import Image from 'next/image'
 import Footer from '@/components/ui/footer'
@@ -28,7 +28,7 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [showNav, setShowNav] = useState(true)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   const techStack = [
     { name: 'Next.js', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg' },
@@ -89,8 +89,8 @@ export default function Home() {
           currentPath="/" 
           showNav={true}
           actionButton={{
-            text: 'Start Project',
-            onClick: () => setIsModalOpen(true)
+            text: 'Contact Us',
+            onClick: () => setIsContactModalOpen(true)
           }}
         />
       </div>
@@ -153,9 +153,9 @@ export default function Home() {
               variant="primary"
               size="md"
               className="w-full sm:w-auto"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsContactModalOpen(true)}
             >
-              Start Your Project
+              Contact Us
             </ButtonBase>
             <ButtonBase
               variant="outline"
@@ -541,10 +541,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
             <Button 
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsContactModalOpen(true)}
               className="bg-brand-background text-brand-primary hover:bg-brand-background/90 rounded-full px-5 sm:px-7 py-2.5 text-base sm:text-lg font-semibold w-full sm:w-auto min-h-[44px]"
             >
-              Start Your Project
+              Contact Us
             </Button>
             <Button 
               className="bg-transparent border-2 border-brand-background text-brand-background hover:bg-brand-background hover:text-brand-primary rounded-full px-5 sm:px-7 py-2.5 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto min-h-[44px]"
@@ -559,10 +559,10 @@ export default function Home() {
       {/* Footer */}
       <Footer />
 
-      {/* Start Project Modal */}
-      <StartProjectModal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+      {/* Contact Form Modal */}
+      <ContactFormModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
       />
     </div>
   )
