@@ -207,7 +207,7 @@ const DataVisualizationSkeleton = () => (
         <circle cx="5" cy="4" r="2" fill="#10b981" opacity="0.8"/>
         
         {/* Multi-layered Bar Groups */}
-        <g transform="translate(0, 15)">
+        <g transform="translate(0, 7)">
           <rect x="8" y="40" width="6" height="25" rx="3" fill="url(#dataGradient1)" opacity="0.8" filter="url(#dataGlow)">
             <animate attributeName="height" values="25;35;25" dur="3s" repeatCount="indefinite"/>
             <animate attributeName="y" values="40;30;40" dur="3s" repeatCount="indefinite"/>

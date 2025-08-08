@@ -13,7 +13,7 @@ export default function Projects() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white projects-page">
       {/* Navigation */}
       <div className="absolute top-0 left-0 right-0 z-[100]">
         <Navigation 

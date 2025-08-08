@@ -13,34 +13,17 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: '/',
     icons: [
       {
-        src: '/icon-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
+        src: '/favicon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
       },
       {
-        src: '/icon-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: '/icon-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
+        src: '/favicon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
         purpose: 'maskable',
       },
     ],
     categories: ['business', 'productivity', 'utilities'],
-    screenshots: [
-      {
-        src: '/screenshot-wide.png',
-        sizes: '1280x720',
-        type: 'image/png',
-      },
-      {
-        src: '/screenshot-narrow.png',
-        sizes: '640x1136',
-        type: 'image/png',
-      },
-    ],
   }
 } 

@@ -53,7 +53,7 @@ export default function Footer({ className = '' }: FooterProps) {
 
   return (
     <footer className={`bg-brand-primary text-brand-background ${className}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-[3vw] sm:px-[4vw] lg:px-[3.5vw] xl:px-[3vw]">
         {/* Main Footer Content - Compact Layout */}
         <div className="py-4 sm:py-5">
           {/* Desktop Layout - Single Row */}
@@ -61,7 +61,7 @@ export default function Footer({ className = '' }: FooterProps) {
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <div className="text-lg sm:text-xl font-bold mb-2">VAIBRANT</div>
-              <p className="text-xs text-brand-background/80 mb-3 leading-relaxed">
+              <p className="text-sm text-brand-background/80 mb-3 leading-relaxed">
                 Expert AI, ML, and technology services that transform businesses and drive innovation.
               </p>
               {/* Social Links */}

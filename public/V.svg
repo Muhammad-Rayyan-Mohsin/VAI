@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .brand { fill: #1F2A44; }
+    .sans { font-family: "Poppins", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  </style>
+  <circle cx="32" cy="32" r="28" class="brand"/>
+  <text x="32" y="32" text-anchor="middle" dominant-baseline="middle"
+        class="sans" font-size="46" font-weight="500" fill="#fff">v</text>
+</svg>

@@ -96,7 +96,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 relative overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
         <Suspense fallback={<div className="absolute inset-0 opacity-30" />}>
           <BackgroundBeams className="opacity-30" />
         </Suspense>
@@ -175,8 +175,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           >
-            <Card className="glass-card-lg">
-              <div className="bg-gray-100 rounded-lg p-2 sm:p-4 md:p-6 mb-3 sm:mb-5">
+            <Card className="glass-card-lg p-4 sm:p-6 md:p-8">
+              <div className="bg-gray-100 rounded-lg p-3 sm:p-5 md:p-7 mb-4 sm:mb-6">
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <div className="flex space-x-2">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full"></div>
@@ -329,9 +329,9 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <div className="text-center text-brand-primary/70">
-                <p className="text-xs sm:text-base md:text-lg font-medium mb-1 text-brand-primary">Our AI models deliver insights that drive decisions.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-4 sm:mt-6">
+              <div className="text-center text-brand-primary/70 pb-2 sm:pb-3">
+                <p className="text-xs sm:text-base md:text-lg font-medium mb-2 sm:mb-3 text-brand-primary">Our AI models deliver insights that drive decisions.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 mt-5 sm:mt-7">
                   <div className="text-left space-y-1.5">
                     <div className="flex items-center gap-2 text-xs sm:text-sm">
                       <Brain className="h-4 w-4 sm:h-5 sm:w-5 icon-brand-secondary flex-shrink-0" />

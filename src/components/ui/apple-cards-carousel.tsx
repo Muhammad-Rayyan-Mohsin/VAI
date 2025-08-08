@@ -322,7 +322,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       <div className="relative w-full overflow-hidden">
                   <div
             className={cn(
-              "flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 select-none",
+              "flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-16 [scrollbar-width:none] md:py-24 select-none",
               isTransitioning && "scroll-auto", // Disable smooth scrolling during position jumps
               isDragging ? "cursor-grabbing" : (isHolding ? "cursor-grabbing" : "cursor-grab")
             )}
@@ -481,7 +481,7 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="relative z-10 flex h-80 w-40 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-72 dark:bg-neutral-900"
+        className="relative z-10 flex h-96 w-40 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[42rem] md:w-72 dark:bg-neutral-900"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">
