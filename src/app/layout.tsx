@@ -114,7 +114,8 @@ const structuredData = {
   },
   address: {
     '@type': 'PostalAddress',
-    addressCountry: 'US'
+    addressLocality: 'Dubai',
+    addressCountry: 'AE'
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
