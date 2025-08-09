@@ -519,7 +519,7 @@ export default function Home() {
                   <Image
                     src={tech.logo}
                     alt={tech.name}
-                    width={100}
+                    width={64}
                     height={64}
                     className="h-16 w-auto object-contain"
                   />
